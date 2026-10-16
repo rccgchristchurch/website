@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Member portal - Christ Church Edmonton (prototype)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  :root{
+    --navy:#042F48;--violet:#403486;--amber:#EF8C34;--dawn:#7373B5;
+    --mist:#E4E4EF;--parchment:#F5F2EC;--graphite:#2B3540;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;overflow-x:hidden}
+  body{min-height:100vh;display:flex;flex-direction:column;background:var(--parchment);color:var(--graphite);font:400 16px/1.65 'Source Sans 3',system-ui,sans-serif}
+  h1,h2,h3{margin:0;font-family:Montserrat,system-ui,sans-serif;color:var(--navy);letter-spacing:-.01em;text-wrap:pretty}
+  h1{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.1}
+  h2{font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.15}
+  h3{font-size:18px;font-weight:700;line-height:1.25}
+  p{margin:0}
+  a{color:var(--violet)}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+  .eyebrow{font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:var(--violet)}
+  .muted{font-size:14px;color:#55606b}
+
+  /* Banner, header, footer */
+  .banner{background:var(--mist);color:var(--navy);border-bottom:2px solid var(--dawn);padding:10px 16px;text-align:center;font-weight:600;font-size:14px}
+  .site-head{background:var(--navy);color:var(--parchment)}
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding-top:6px;padding-bottom:6px}
+  .site-head a{color:var(--parchment);text-decoration:none;font:700 14px Montserrat,system-ui;line-height:1.3}
+  .site-head a:hover{color:var(--amber)}
+  .site-foot{margin-top:auto;background:var(--navy);color:var(--parchment);padding:18px 16px;text-align:center;font-size:14px;line-height:1.5}
+
+  /* Buttons and inputs */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:4px;border:2px solid var(--navy);background:var(--amber);color:var(--navy);font:700 14px/1 Montserrat,system-ui;cursor:pointer;text-decoration:none}
+  .btn:hover{background:var(--violet);border-color:var(--violet);color:var(--parchment)}
+  .btn.secondary{background:transparent;color:var(--navy)}
+  .btn.secondary:hover{background:var(--navy);color:var(--parchment)}
+  .btn.small{min-height:40px;padding:0 14px;font-size:13px}
+  .btn.head{min-height:36px;padding:0 14px;font-size:12px;border-color:var(--parchment);background:transparent;color:var(--parchment)}
+  .btn.head:hover{background:var(--parchment);color:var(--navy)}
+  .btn:disabled,.btn[aria-disabled=true]{opacity:.5;cursor:not-allowed}
+  .btn:disabled:hover{background:var(--amber);border-color:var(--navy);color:var(--navy)}
+  .linkbtn{background:none;border:0;padding:0;color:var(--violet);font:600 16px 'Source Sans 3',system-ui;text-decoration:underline;cursor:pointer;min-height:44px}
+  label{display:grid;gap:6px;font-weight:600;color:var(--navy)}
+  input,select{width:100%;min-width:0;min-height:48px;border:2px solid var(--navy);border-radius:4px;background:#fff;color:var(--graphite);padding:0 14px;font:400 16px 'Source Sans 3',system-ui}
+  select{appearance:auto}
+  .check{display:flex;align-items:center;gap:12px;min-height:44px;font-weight:400;color:var(--graphite);cursor:pointer}
+  .check input{width:22px;height:22px;min-height:0;margin:0;accent-color:var(--violet);flex:none}
+  .grid{display:grid;gap:16px}
+  @media (min-width:700px){.grid.two{grid-template-columns:1fr 1fr}}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .status{font-weight:600;color:#1B7F4C;min-height:24px}
+  .status[data-tone=warn]{color:#B45309}
+  .warn{color:#B45309;font-weight:600;border-left:4px solid var(--amber);padding-left:12px}
+  .callout{background:var(--mist);border-left:4px solid var(--violet);padding:14px 16px;color:var(--navy)}
+
+  /* Auth screen */
+  .auth{padding:40px 0 64px}
+  .card{background:#fff;border:2px solid var(--navy);border-radius:4px;padding:clamp(20px,4vw,40px);display:grid;gap:20px;max-width:520px;margin:0 auto}
+  .card form{display:grid;gap:16px}
+
+  /* Dashboard */
+  .dash{padding:32px 0 64px}
+  .dash .wrap{display:grid;gap:24px}
+  @media (min-width:860px){.dash .wrap{grid-template-columns:240px 1fr;align-items:start}}
+  .side{display:grid;gap:2px;background:var(--navy);border:2px solid var(--navy);border-radius:4px;overflow:hidden;position:sticky;top:12px}
+  .side button{display:block;width:100%;text-align:left;min-height:48px;padding:0 16px;border:0;background:var(--parchment);color:var(--navy);font:700 14px Montserrat,system-ui;cursor:pointer}
+  .side button:hover{background:var(--mist)}
+  .side button[aria-current=page]{background:var(--violet);color:var(--parchment)}
+  .side button:focus-visible{outline-offset:-4px}
+  .panel{background:#fff;border:2px solid var(--navy);border-radius:4px;padding:clamp(20px,3.5vw,40px);display:grid;gap:20px}
+  .panel header{display:grid;gap:8px;padding-bottom:16px;border-bottom:2px solid var(--mist)}
+  .panel fieldset{border:0;margin:0;padding:0;display:grid;gap:4px}
+  .panel legend{padding:0;margin-bottom:8px}
+
+  /* Tables and lists */
+  .tbl{width:100%;border-collapse:collapse;font-size:16px}
+  .tbl th,.tbl td{padding:12px 10px;text-align:left;border-bottom:2px solid var(--mist);vertical-align:middle}
+  .tbl th{font:700 12px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+  .tbl-wrap{overflow-x:auto}
+  .hh{list-style:none;margin:0;padding:0;display:grid;gap:2px;background:var(--mist)}
+  .hh li{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:#fff;padding:12px 0}
+  .hh li .meta{display:grid;gap:2px}
+  .empty{padding:14px 16px;background:var(--mist);color:var(--navy)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="banner" role="note">Prototype: data is saved only in this browser. A real member login (Supabase or similar) comes later.</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a href="index.html">RCCG Christ Church Edmonton · Member portal</a>
+    <button type="button" class="btn head" id="signout" hidden>Sign out</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== SIGN IN / CREATE PROFILE ===== -->
+  <section class="auth" id="screen-auth" aria-labelledby="auth-title">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <div class="eyebrow">Members</div>
+          <h1 id="auth-title">Sign in</h1>
+          <p class="muted" style="margin-top:8px">Any email and password works in this prototype.</p>
+        </div>
+
+        <form id="form-signin" novalidate>
+          <label for="si-email">Email<input id="si-email" type="email" autocomplete="username" required></label>
+          <label for="si-pass">Password<input id="si-pass" type="password" autocomplete="current-password" required></label>
+          <div class="row">
+            <button type="submit" class="btn">Sign in</button>
+            <button type="button" class="linkbtn" id="forgot">Forgot password?</button>
+          </div>
+          <p class="status" id="auth-note" role="status"></p>
+          <p>First time here? <button type="button" class="linkbtn" id="to-create">Create your profile</button></p>
+        </form>
+
+        <form id="form-create" hidden novalidate>
+          <label for="cr-name">Full name<input id="cr-name" type="text" autocomplete="name" required></label>
+          <label for="cr-email">Email<input id="cr-email" type="email" autocomplete="email" required></label>
+          <label for="cr-phone">Phone<input id="cr-phone" type="tel" autocomplete="tel"></label>
+          <label for="cr-pass">Password<input id="cr-pass" type="password" autocomplete="new-password" required></label>
+          <div class="row">
+            <button type="submit" class="btn">Create profile</button>
+            <button type="button" class="linkbtn" id="to-signin">Back to sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section class="dash" id="screen-dash" hidden aria-labelledby="dash-title">
+    <div class="wrap">
+      <nav class="side" aria-label="Portal sections" id="side-nav">
+        <button type="button" data-section="profile" aria-current="page">Profile</button>
+        <button type="button" data-section="teams">My teams</button>
+        <button type="button" data-section="giving">Giving receipts</button>
+        <button type="button" data-section="household">Household</button>
+      </nav>
+
+      <div>
+        <h2 id="dash-title" class="eyebrow" style="margin-bottom:12px">Signed in as <span id="who"></span></h2>
+
+        <!-- Profile -->
+        <form class="panel" id="sec-profile" data-section="profile">
+          <header><div class="eyebrow">Profile</div><h2>Your details</h2><p class="muted">Keep your contact details current so the church office can reach you.</p></header>
+          <div class="grid two">
+            <label for="p-first">First name<input id="p-first" name="first" type="text" autocomplete="given-name"></label>
+            <label for="p-pref">Preferred first name<input id="p-pref" name="preferred" type="text" autocomplete="nickname"></label>
+            <label for="p-last">Last name<input id="p-last" name="last" type="text" autocomplete="family-name"></label>
+            <label for="p-email">Email<input id="p-email" name="email" type="email" autocomplete="email"></label>
+            <label for="p-phone">Phone<input id="p-phone" name="phone" type="tel" autocomplete="tel"></label>
+            <label for="p-address">Address<input id="p-address" name="address" type="text" autocomplete="street-address"></label>
+            <label for="p-birthday">Birthday<input id="p-birthday" name="birthday" type="date"></label>
+            <label for="p-since">Member since (month and year)<input id="p-since" name="since" type="month"></label>
+            <label for="p-gender">Gender<select id="p-gender" name="gender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option></select></label>
+          </div>
+          <div class="row"><button type="submit" class="btn">Save profile</button><span class="status" id="profile-status" role="status"></span></div>
+        </form>
+
+        <!-- My teams -->
+        <form class="panel" id="sec-teams" data-section="teams" hidden>
+          <header><div class="eyebrow">My teams</div><h2>Serving units and fellowship groups</h2></header>
+          <p class="callout">We recommend serving in at most two units so that you can give each one your best and avoid burnout.</p>
+          <fieldset><legend><h3>Serving units</h3></legend><div id="units-list" class="grid two" style="gap:0 16px"></div></fieldset>
+          <p class="warn" id="units-warn" role="status" hidden>You have ticked more than two units. That is allowed, but please consider which ones you can serve in faithfully.</p>
+          <fieldset><legend><h3>Fellowship groups</h3></legend><div id="groups-list" class="grid two" style="gap:0 16px"></div></fieldset>
+          <div class="row"><button type="submit" class="btn">Save teams</button><span class="status" id="teams-status" role="status"></span></div>
+        </form>
+
+        <!-- Giving receipts -->
+        <div class="panel" id="sec-giving" data-section="giving" hidden>
+          <header><div class="eyebrow">Giving receipts</div><h2>Your annual receipts</h2></header>
+          <p>Official receipts for income tax purposes are issued annually in February for gifts of $20 or more received in the previous calendar year. Totals and downloads will appear here once online giving is connected.</p>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th scope="col">Year</th><th scope="col">Total amount</th><th scope="col">Receipt</th></tr></thead>
+              <tbody id="giving-rows"></tbody>
+            </table>
+          </div>
+          <div class="row">
+            <a class="btn secondary" id="request-statement" href="#">Request a statement</a>
+            <span class="muted">Opens your email app, addressed to the church office.</span>
+          </div>
+        </div>
+
+        <!-- Household -->
+        <div class="panel" id="sec-household" data-section="household" hidden>
+          <header><div class="eyebrow">Household</div><h2>Family members</h2><p class="muted">Add the people in your household so we can celebrate birthdays and plan for children's ministry.</p></header>
+          <ul class="hh" id="hh-list" aria-live="polite"></ul>
+          <p class="empty" id="hh-empty">No family members added yet.</p>
+          <form id="form-hh" class="grid" novalidate>
+            <h3>Add a family member</h3>
+            <div class="grid two">
+              <label for="hh-name">Name<input id="hh-name" type="text" required></label>
+              <label for="hh-rel">Relationship<select id="hh-rel"><option>Spouse</option><option>Child</option><option>Parent</option><option>Sibling</option><option>Other</option></select></label>
+              <label for="hh-bday">Birthday<input id="hh-bday" type="date"></label>
+            </div>
+            <div class="row"><button type="submit" class="btn">Add member</button><span class="status" id="hh-status" role="status"></span></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">A parish of The Redeemed Christian Church of God · 2331 90B Street SW, Edmonton AB T6X 1V6</footer>
+
+<script src="portal.js"></script>
+</body>
+</html>

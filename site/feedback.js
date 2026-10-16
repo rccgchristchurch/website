@@ -15,7 +15,9 @@
     #cce-fb-panel header button{background:none;border:0;color:#F5F2EC;font-size:20px;cursor:pointer;line-height:1}
     #cce-fb-panel form{display:grid;gap:10px;padding:14px 16px 16px}
     #cce-fb-panel label{display:grid;gap:4px;font:600 13px 'Source Sans 3',system-ui;color:#042F48}
-    #cce-fb-panel input,#cce-fb-panel textarea{width:100%;border:2px solid #042F48;border-radius:4px;background:#fff;padding:8px 10px;font:400 15px 'Source Sans 3',system-ui;color:#2B3540}
+    #cce-fb-panel input,#cce-fb-panel textarea,#cce-fb-panel select{width:100%;border:2px solid #042F48;border-radius:4px;background:#fff;padding:8px 10px;font:400 15px 'Source Sans 3',system-ui;color:#2B3540}
+    #cce-fb-panel select{height:40px;padding:0 8px}
+    #cce-fb-panel .cce-fb-hint{font:400 12px/1.4 'Source Sans 3',system-ui;color:#403486}
     #cce-fb-panel textarea{min-height:110px;resize:vertical}
     #cce-fb-panel .cce-fb-page{font-size:13px;color:#403486}
     #cce-fb-panel .cce-fb-send{min-height:44px;background:#EF8C34;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px Montserrat,system-ui;cursor:pointer}
@@ -30,14 +32,20 @@
   style.textContent = css;
   document.head.appendChild(style);
 
+  // The prototype's toolbar select lists every screen; reuse it so the reviewer can pick any page.
+  const FALLBACK_PAGES = ['Home', "I'm New · Plan Your Visit", 'About', 'Our Story', 'Values', 'Priorities', 'Leadership', 'Worship · Services', 'House Fellowships', 'Ministries', 'Genesis Church', 'Discovery Centre', 'Lighthouse Christ Church', 'Men of Impact (adult template)', 'Church Units', 'Events', 'Event detail · Couples Retreat', 'Media · Watch', 'Give', 'Connect · Contact hub', 'Prayer Request', 'Membership step 1', 'Christian Business', '404', 'Search results', 'Privacy / generic page', 'Design system'];
+  function pageList() {
+    const sel = document.querySelector('select');
+    const fromToolbar = sel ? Array.from(sel.options).map((o) => o.textContent.trim()).filter(Boolean) : [];
+    return fromToolbar.length ? fromToolbar : FALLBACK_PAGES;
+  }
   function currentPage() {
-    // The prototype keeps the open page in localStorage and in the toolbar select.
     const sel = document.querySelector('select');
     const label = sel && sel.selectedOptions && sel.selectedOptions[0] ? sel.selectedOptions[0].textContent.trim() : '';
-    let key = '';
-    try { key = localStorage.getItem('cce.page') || ''; } catch (e) {}
-    const vp = (function () { try { return localStorage.getItem('cce.viewport') || 'desktop'; } catch (e) { return 'desktop'; } })();
-    return (label || key || 'Home') + ' (' + vp + ')';
+    return label || 'Home';
+  }
+  function currentViewport() {
+    try { return localStorage.getItem('cce.viewport') || 'desktop'; } catch (e) { return 'desktop'; }
   }
 
   const btn = document.createElement('button');
@@ -53,8 +61,8 @@
   panel.innerHTML = `
     <header><span>Feedback on this draft</span><button type="button" aria-label="Close">&times;</button></header>
     <form>
-      <div class="cce-fb-page">Page: <strong data-page></strong></div>
-      <label>Your name<input name="name" autocomplete="name" required></label>
+      <label>Which page is this about?<select name="page" data-page></select><span class="cce-fb-hint">Pre-filled with the page you are on. Choose "Whole site" for general comments.</span></label>
+      <label>Your name<input name="name" autocomplete="name" required><span class="cce-fb-hint">Only used to reach you if your feedback needs clarifying.</span></label>
       <label>Department / ministry<input name="department" placeholder="e.g. Media, Genesis, Welcome"></label>
       <label>What should change?<textarea name="message" required placeholder="What works, what is missing, what is wrong"></textarea></label>
       <button class="cce-fb-send" type="submit">Send feedback</button>
@@ -66,8 +74,19 @@
   const pageEl = panel.querySelector('[data-page]');
   const closeBtn = panel.querySelector('header button');
 
+  function fillPages() {
+    const current = currentPage();
+    pageEl.innerHTML = '';
+    ['Whole site'].concat(pageList()).forEach((name) => {
+      const o = document.createElement('option');
+      o.value = name;
+      o.textContent = name;
+      if (name === current) o.selected = true;
+      pageEl.appendChild(o);
+    });
+  }
   function open() {
-    pageEl.textContent = currentPage();
+    fillPages();
     panel.setAttribute('data-open', '');
     panel.removeAttribute('data-done');
     form.querySelector('[name=name]').focus();
@@ -75,13 +94,13 @@
   function close() { panel.removeAttribute('data-open'); btn.focus(); }
   btn.addEventListener('click', () => (panel.hasAttribute('data-open') ? close() : open()));
   closeBtn.addEventListener('click', close);
-  panel.querySelector('[data-again]').addEventListener('click', () => { form.reset(); panel.removeAttribute('data-done'); pageEl.textContent = currentPage(); });
+  panel.querySelector('[data-again]').addEventListener('click', () => { form.reset(); panel.removeAttribute('data-done'); fillPages(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel.hasAttribute('data-open')) close(); });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = {
-      page: pageEl.textContent,
+      page: pageEl.value + (pageEl.value === 'Whole site' ? '' : ' (' + currentViewport() + ')'),
       name: form.name.value.trim(),
       department: form.department.value.trim(),
       message: form.message.value.trim(),

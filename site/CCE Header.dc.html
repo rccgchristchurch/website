@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/styles.css">
+  <script src="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@300;400;600&display=swap">
+</helmet>
+<header style="background:#042F48;color:#F5F2EC;font-family:'Source Sans 3',system-ui;border-bottom:2px solid #403486;position:relative;z-index:30">
+  <a href="#main" style="position:absolute;left:-9999px;top:0;background:#EF8C34;color:#042F48;padding:8px 12px;font:700 14px Montserrat,system-ui;z-index:50" style-focus="left:8px;top:8px">Skip to content</a>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 16px">
+      <a href="#home" onClick="{{ goHome }}" aria-label="Christ Church Edmonton home" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#F5F2EC">
+        <img src="assets/logos/gracepoint/gracepoint-white-text.png" alt="RCCG Christ Church Edmonton" style="height:40px;width:auto;display:block">
+      </a>
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="#give" onClick="{{ goGive }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 13px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Give</a>
+        <button type="button" onClick="{{ toggle }}" aria-label="Open menu" aria-expanded="{{ open }}" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:2px solid #7373B5;border-radius:4px;color:#F5F2EC;cursor:pointer" style-focus="outline:2px solid #EF8C34;outline-offset:2px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button>
+      </div>
+    </div>
+    <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:0;left:0;right:0;height:100vh;max-height:860px;background:#042F48;display:grid;grid-template-rows:auto 1fr auto;z-index:40;border-bottom:4px solid #EF8C34">
+        <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 16px;border-bottom:2px solid #403486"><span style="font:800 12px Montserrat,system-ui">CHRIST CHURCH</span><button type="button" onClick="{{ toggle }}" aria-label="Close menu" style="width:44px;height:44px;display:grid;place-items:center;background:transparent;border:2px solid #7373B5;border-radius:4px;color:#F5F2EC;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div>
+        <nav style="display:grid;align-content:start;padding:8px 16px;overflow:auto">
+          <sc-for list="{{ items }}" as="it" hint-placeholder-count="9">
+            <a href="{{ it.href }}" onClick="{{ it.go }}" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">{{ it.label }}</a>
+          </sc-for>
+        </nav>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px;border-top:2px solid #403486">
+          <a href="#visit" onClick="{{ goVisit }}" style="display:flex;align-items:center;min-height:48px;padding:0 14px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Plan Your Visit</a>
+          <a href="#watch" onClick="{{ goWatch }}" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Watch Online</a>
+          <a href="#give" onClick="{{ goGive }}" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Give</a>
+          <a href="#prayer" onClick="{{ goPrayer }}" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Prayer Request</a>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;height:88px;padding:0 48px">
+      <a href="#home" onClick="{{ goHome }}" aria-label="Christ Church Edmonton home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#F5F2EC">
+        <img src="assets/logos/gracepoint/gracepoint-white-text.png" alt="RCCG Christ Church Edmonton" style="height:56px;width:auto;display:block">
+      </a>
+      <nav aria-label="Primary" style="display:flex;gap:2px;justify-self:start">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="9">
+          <a href="{{ it.href }}" onClick="{{ it.go }}" aria-current="{{ it.current }}" style="display:inline-flex;align-items:center;height:44px;padding:0 11px;color:#F5F2EC;font:700 12px/1 Montserrat,system-ui;letter-spacing:.1em;text-decoration:none;border-bottom:2px solid {{ it.border }}" style-hover="border-bottom-color:#EF8C34" style-focus="outline:2px solid #EF8C34;outline-offset:2px">{{ it.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;gap:12px">
+        <a href="#visit" onClick="{{ goVisit }}" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:transparent;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Plan Your Visit</a>
+        <a href="#give" onClick="{{ goGive }}" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Give</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:90},&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;page&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;default&quot;:null,&quot;tsType&quot;:&quot;(page: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  componentDidUpdate(prev) { if (prev.page !== this.props.page && this.state.open) this.setState({ open: false }); }
+  go(page) { return (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ open: false }); if (this.props.nav) this.props.nav(page); }; }
+  renderVals() {
+    const mobile = !!this.props.mobile;
+    const page = this.props.page || 'home';
+    const sections = { home: ['home'], visit: ['visit'], about: ['about','story','values','priorities','leadership'], worship: ['worship','fellowships'], ministries: ['ministries','genesis','discovery','lighthouse','men','units'], events: ['events','event'], watch: ['watch'], give: ['give'], connect: ['connect','prayer','membership','business'] };
+    const defs = [['home','HOME'],['visit',"I'M NEW"],['about','ABOUT'],['worship','WORSHIP'],['ministries','MINISTRIES'],['events','EVENTS'],['watch','MEDIA'],['give','GIVE'],['connect','CONNECT']];
+    const items = defs.map(([k, label]) => { const cur = (sections[k] || []).includes(page); return { label, href: '#' + k, go: this.go(k), current: cur ? 'page' : undefined, border: cur ? '#EF8C34' : 'transparent' }; });
+    return { mobile, notMobile: !mobile, open: this.state.open, items,
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      goHome: this.go('home'), goGive: this.go('give'), goVisit: this.go('visit'), goWatch: this.go('watch'), goPrayer: this.go('prayer') };
+  }
+}
+</script>
+</body>
+</html>

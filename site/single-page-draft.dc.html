@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/styles.css">
+  <script src="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@300;400;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap">
+  <style>
+    body{margin:0;background:#CFCDC8;font-family:'Source Sans 3',system-ui;color:#2B3540}
+    a{color:#403486}a:hover{text-decoration:underline}
+    *{box-sizing:border-box}
+  </style>
+</helmet>
+<section style="padding:48px;display:grid;gap:112px;justify-items:start">
+
+  <!-- ============ LEGEND ============ -->
+  <div style="display:grid;gap:12px;max-width:900px">
+    <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">RCCG Christ Church Edmonton · Website redesign · Round 1</div>
+    <h1 style="margin:0;font:800 40px/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Design system, Home, Plan Your Visit, Give, Connect</h1>
+    <p style="margin:0;font-size:18px;line-height:1.65;max-width:720px">Desktop 1440 and mobile 390 side by side. Header nav, footer links and CTAs jump between screens. Annotation tags sit on the design and are not part of the build:</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:5px 7px;background:#1B7F4C;color:#fff;border-radius:2px">FINAL COPY</span><span style="font-size:14px">use verbatim</span>
+      <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:5px 7px;background:#B45309;color:#fff;border-radius:2px">PLACEHOLDER</span><span style="font-size:14px">designer's draft, replace freely</span>
+      <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:5px 7px;background:#BE185D;color:#fff;border-radius:2px">CM</span><span style="font-size:14px">content manager must supply</span>
+    </div>
+    <nav style="display:flex;gap:16px;flex-wrap:wrap;font:600 14px 'Source Sans 3',system-ui"><a href="#system">Design system</a><a href="#home">Home</a><a href="#visit">Plan Your Visit</a><a href="#give">Give</a><a href="#connect">Connect / Prayer</a><a href="#tokens">CSS tokens</a></nav>
+  </div>
+
+  <!-- ============ DESIGN SYSTEM ============ -->
+  <div id="system" data-screen-label="Design system" style="display:grid;gap:0;width:1440px;background:#F5F2EC;border:2px solid #042F48">
+    <div style="padding:40px 64px;border-bottom:2px solid #042F48;display:flex;justify-content:space-between;align-items:end">
+      <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Design system</div><h2 style="margin:8px 0 0;font:800 48px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Christ Church Edmonton</h2></div>
+      <div style="font-size:14px;color:#042F48;opacity:.7">Modernist grid rigor, master brand palette</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #042F48">
+      <div style="padding:40px 64px;border-right:2px solid #042F48">
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486;margin-bottom:20px">Colour tokens · contrast on Parchment / Navy</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:#042F48;border:2px solid #042F48">
+          <sc-for list="{{ tokens }}" as="t" hint-placeholder-count="7">
+            <div style="background:#F5F2EC;padding:14px;display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center">
+              <div style="width:48px;height:48px;background:{{ t.hex }};border:1px solid #042F48"></div>
+              <div><div style="font:700 14px Montserrat,system-ui;color:#042F48">{{ t.name }}</div><div style="font:400 13px 'Source Sans 3',system-ui;color:#2B3540">{{ t.hex }} · {{ t.var }}</div><div style="font-size:13px;color:#2B3540">{{ t.contrast }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:16px 0 0;font-size:14px;line-height:1.6">Proportions per page: Navy 40, Parchment 24, Violet 15, Mist 10, Amber 7, other 4. Amber is never used as text on light grounds (2.2:1). Dawn Violet is for icons, large type and tints only.</p>
+      </div>
+      <div style="padding:40px 64px;display:grid;gap:18px;align-content:start">
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Type scale</div>
+        <div style="font:800 56px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Display 56 / 800</div>
+        <div style="font:800 40px/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Display 40 / 800</div>
+        <div style="font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">Heading 32 / 700</div>
+        <div style="font:700 24px/1.2 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">Heading 24 / 700</div>
+        <div style="font:600 18px/1.4 Montserrat,system-ui;color:#042F48">Subheading 18 / 600 sentence case</div>
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Eyebrow 11 / 700 / +28%</div>
+        <p style="margin:0;font:300 20px/1.65 'Source Sans 3',system-ui">Intro 20 / 300 — Our doors and hearts are wide open to receive you.</p>
+        <p style="margin:0;font:400 16px/1.65 'Source Sans 3',system-ui">Body 16 / 400 / 1.65 — Source Sans 3 for all running text, forms and navigation copy.</p>
+        <div style="font:600 16px 'Source Sans 3',system-ui">Label 16 / 600</div>
+        <div style="font:400 13px 'Source Sans 3',system-ui;color:rgba(4,47,72,.7)">Caption 13 / 400 in 70% navy</div>
+        <p style="margin:0;font:italic 500 26px/1.4 'Cormorant Garamond',serif;color:#042F48">“For where two or three gather in my name, there am I with them.” <span style="font-size:18px">Matthew 18:20</span></p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #042F48">
+      <div style="padding:40px 64px;border-right:2px solid #042F48;display:grid;gap:20px;align-content:start">
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Buttons · 4px radius · flush-left label · 48px</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#visit" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Primary</a>
+          <a href="#visit" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:transparent;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Secondary</a>
+          <a href="#visit" style="display:inline-flex;align-items:center;gap:6px;min-height:48px;color:#403486;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="text-decoration:underline">Tertiary link <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+          <span style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;opacity:.45">Disabled</span>
+          <span style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui"><span style="width:14px;height:14px;border:2px solid #042F48;border-right-color:transparent;border-radius:50%"></span>Loading…</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;background:#042F48;padding:16px">
+          <a href="#give" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none">Primary on Navy</a>
+          <a href="#visit" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none">Secondary on Navy</a>
+          <span style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;outline:2px solid #EF8C34;outline-offset:2px">Focus ring</span>
+        </div>
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486;margin-top:8px">Date badge · ministry tags · section header</div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="width:64px;border:2px solid #042F48;text-align:center;background:#F5F2EC"><div style="background:#042F48;color:#F5F2EC;font:700 10px Montserrat,system-ui;letter-spacing:.2em;padding:4px 0">NOV</div><div style="font:800 28px/1.2 Montserrat,system-ui;color:#042F48;padding:4px 0">28</div></div>
+          <span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#042F48;color:#F5F2EC">Church-wide</span>
+          <span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#E72F24;color:#fff;border-radius:999px">Genesis</span>
+          <span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#1A1A1B;color:#00CEC9">Discovery</span>
+          <span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#F9F7F2;color:#1A1A1B;border:1px solid #D4AF37">Lighthouse</span>
+          <span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#403486;color:#F5F2EC">Men · Women · Couples · Seniors</span>
+        </div>
+        <div style="border-top:2px solid #042F48;padding-top:16px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Eyebrow label</div><h3 style="margin:6px 0 0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">Section header with eyebrow</h3></div>
+      </div>
+      <div style="padding:40px 64px;display:grid;gap:20px;align-content:start">
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Form fields · 48px · states</div>
+        <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">First name<input type="text" value="Adaeze" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;color:#2B3540" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+        <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" value="adaeze@" style="height:48px;border:2px solid #B3261E;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;color:#2B3540"><span style="font:400 14px 'Source Sans 3',system-ui;color:#B3261E">Enter a full email address, e.g. name@example.com</span></label>
+        <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Phone<input type="tel" value="(780) 555-0142" style="height:48px;border:2px solid #1B7F4C;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;color:#2B3540"><span style="font:400 14px 'Source Sans 3',system-ui;color:#1B7F4C">Looks good</span></label>
+        <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Fund<select style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;color:#2B3540"><option>General</option><option>Tithe</option></select></label>
+        <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486;margin-top:8px">Accordion · tabs</div>
+        <div style="border-top:2px solid #042F48;border-bottom:2px solid #042F48">
+          <div style="display:flex;justify-content:space-between;align-items:center;min-height:56px;font:600 18px Montserrat,system-ui;color:#042F48">What should I wear?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="m6 9 6 6 6-6"></path></svg></div>
+          <p style="margin:0 0 20px;font-size:16px;line-height:1.65;max-width:52ch">Come as you are. You'll see everything from suits and traditional attire to jeans.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;min-height:56px;border-top:1px solid #042F48;font:600 18px Montserrat,system-ui;color:#042F48">How long is the service?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </div>
+        <div style="display:flex;border-bottom:2px solid #042F48"><span style="padding:12px 16px;font:700 14px Montserrat,system-ui;color:#042F48;border-bottom:4px solid #EF8C34;margin-bottom:-2px">Sermons</span><span style="padding:12px 16px;font:700 14px Montserrat,system-ui;color:#403486">Monthly Greetings</span><span style="padding:12px 16px;font:700 14px Montserrat,system-ui;color:#403486">Podcasts</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:#042F48;border-bottom:2px solid #042F48">
+      <div style="background:#F5F2EC;padding:0 0 16px"><div style="height:140px;background:repeating-linear-gradient(45deg,#E4E4EF 0 12px,#D7D7E6 12px 24px);display:grid;place-items:center;font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#042F48">PHOTO</div><div style="padding:16px 16px 0;display:grid;gap:6px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:#403486">Event card</div><div style="font:700 18px/1.25 Montserrat,system-ui;color:#042F48">Couples Retreat 2025</div><div style="font-size:14px">Nov 28–29 · Leduc</div></div></div>
+      <div style="background:#F5F2EC;padding:0 0 16px"><div style="height:140px;background:#042F48;display:grid;place-items:center;color:#F5F2EC"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div><div style="padding:16px 16px 0;display:grid;gap:6px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:#403486">Sermon card</div><div style="font:700 18px/1.25 Montserrat,system-ui;color:#042F48">[Sermon title]</div><div style="font-size:14px">Pastor David Oladipo · Oct 12</div></div></div>
+      <div style="background:#F5F2EC;border-top:8px solid #403486;padding:16px;display:grid;gap:6px;align-content:start"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:#403486">Ministry card</div><div style="font:700 18px/1.25 Montserrat,system-ui;color:#042F48">Women of Zion</div><div style="font-size:14px;line-height:1.5">Bible study, prayer and shared experiences.</div></div>
+      <div style="background:#F5F2EC;padding:0 0 16px"><div style="aspect-ratio:1;background:repeating-linear-gradient(45deg,#E4E4EF 0 12px,#D7D7E6 12px 24px);display:grid;place-items:center;font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#042F48">HEADSHOT</div><div style="padding:16px 16px 0;display:grid;gap:4px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:#403486">Person card</div><div style="font:700 18px/1.25 Montserrat,system-ui;color:#042F48">Pastor David Oladipo</div><div style="font-size:14px">Parish Pastor</div></div></div>
+      <div style="background:#E4E4EF;padding:16px;display:grid;gap:8px;align-content:start"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;color:#403486">Value card</div><div style="font:700 18px/1.25 Montserrat,system-ui;color:#042F48">Pursuit of God</div><div style="font-size:14px;line-height:1.5">We thirst for His presence and to know more of Him.</div><div style="font:italic 500 17px/1.3 'Cormorant Garamond',serif;color:#403486">Psalm 42:1-2, 63:1-3</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 390px;border-bottom:2px solid #042F48">
+      <div style="display:grid;grid-template-rows:auto auto auto;border-right:2px solid #042F48">
+        <div style="padding:24px 64px 12px;font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Hero variants · photo / colour / sub-brand</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#042F48;margin:0 64px 24px;border:2px solid #042F48">
+          <div style="height:220px;background:repeating-linear-gradient(45deg,#E4E4EF 0 12px,#D7D7E6 12px 24px);position:relative"><div style="position:absolute;inset:0;background:rgba(4,47,72,.2)"></div><div style="position:absolute;left:24px;bottom:24px;right:24px;color:#F5F2EC"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.28em;color:#EF8C34">PHOTO + 20% NAVY</div><div style="font:800 24px/1.1 Montserrat,system-ui;letter-spacing:-.02em;text-shadow:0 1px 2px rgba(4,47,72,.5)">Habitation of God's glory</div></div></div>
+          <div style="height:220px;background:#042F48;position:relative;overflow:hidden"><div style="position:absolute;left:-120px;top:-160px;width:420px;height:420px;background:repeating-conic-gradient(from 0deg,rgba(239,140,52,.18) 0 3deg,transparent 3deg 14deg);border-radius:50%"></div><div style="position:absolute;left:24px;bottom:24px;right:24px;color:#F5F2EC"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.28em;color:#EF8C34">NAVY + RAY MOTIF</div><div style="font:800 24px/1.1 Montserrat,system-ui;letter-spacing:-.02em">Our Story</div></div></div>
+          <div style="height:220px;background:#1A1A1B;position:relative;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px"><div style="position:absolute;left:24px;bottom:24px;right:24px;color:#fff"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.28em;color:#00CEC9">SUB-BRAND · DISCOVERY</div><div style="font:800 24px/1.1 Montserrat,system-ui;text-transform:uppercase">Focus &amp; Purpose</div></div><div style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#D4AF37"></div></div>
+        </div>
+        <div style="padding:0 64px 24px;display:grid;gap:12px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Cookie / consent bar</div>
+          <div style="background:#042F48;color:#F5F2EC;padding:20px 24px;display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;border-top:4px solid #EF8C34"><p style="margin:0;font-size:16px;line-height:1.5">We use cookies to count visits and keep the livestream working. No advertising trackers. <a href="#privacy" style="color:#F5F2EC">Privacy policy</a></p><a href="#" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Essential only</a><a href="#" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Accept</a></div>
+        </div>
+      </div>
+      <div style="background:#042F48;color:#F5F2EC;display:grid;grid-template-rows:auto 1fr auto;min-height:760px">
+        <div style="display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 16px;border-bottom:2px solid #403486"><span style="font:800 12px Montserrat,system-ui">CHRIST CHURCH</span><span style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#7373B5">MOBILE MENU</span><span style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #7373B5;border-radius:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></span></div>
+        <nav style="display:grid;align-content:start;padding:8px 16px">
+          <a href="#home" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Home</a>
+          <a href="#visit" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">I'm New <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#about" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">About <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#worship" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Worship <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#ministries" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Ministries <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#events" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Events <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#watch" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Media <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#give" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui;border-bottom:1px solid #403486">Give <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+          <a href="#connect" style="display:flex;justify-content:space-between;align-items:center;min-height:56px;color:#F5F2EC;text-decoration:none;font:700 20px Montserrat,system-ui">Connect <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></a>
+        </nav>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px;border-top:2px solid #403486">
+          <a href="#visit" style="display:flex;align-items:center;min-height:48px;padding:0 14px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Plan Your Visit</a>
+          <a href="#watch" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Watch Online</a>
+          <a href="#give" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Give</a>
+          <a href="#connect" style="display:flex;align-items:center;min-height:48px;padding:0 14px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 14px Montserrat,system-ui;text-decoration:none">Prayer Request</a>
+        </div>
+      </div>
+    </div>
+    <div id="tokens" style="padding:40px 64px;display:grid;grid-template-columns:1fr 1fr;gap:48px">
+      <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486;margin-bottom:12px">CSS variables · drop into theme.css</div><pre style="margin:0;background:#042F48;color:#E4E4EF;padding:24px;font:400 13px/1.6 ui-monospace,Menlo,monospace;overflow:auto;white-space:pre">{{ cssTokens }}</pre></div>
+      <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486;margin-bottom:12px">Type scale and rules</div><pre style="margin:0;background:#042F48;color:#E4E4EF;padding:24px;font:400 13px/1.6 ui-monospace,Menlo,monospace;overflow:auto;white-space:pre">{{ cssType }}</pre></div>
+    </div>
+  </div>
+
+  <!-- ============ HOME ============ -->
+  <div id="home" data-screen-label="Home" style="display:grid;gap:16px">
+    <div style="display:flex;gap:16px;align-items:center"><span style="font:800 13px Montserrat,system-ui;background:#042F48;color:#F5F2EC;padding:6px 10px">1a</span><h2 style="margin:0;font:700 24px Montserrat,system-ui;color:#042F48">Home</h2><span style="font-size:14px">1440 · 390</span></div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <div style="width:1440px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" hint-size="100%,90px"></dc-import>
+        <div style="position:relative;height:680px;background:repeating-linear-gradient(45deg,#E4E4EF 0 14px,#D7D7E6 14px 28px);overflow:hidden">
+          <div style="position:absolute;inset:0;background:rgba(4,47,72,.2)"></div>
+          <div style="position:absolute;left:-200px;top:-260px;width:760px;height:760px;background:repeating-conic-gradient(from 0deg,rgba(239,140,52,.22) 0 2deg,transparent 2deg 11deg);border-radius:50%"></div>
+          <div style="position:absolute;right:64px;top:24px;font:600 13px 'Source Sans 3',system-ui;color:#042F48;background:rgba(245,242,236,.85);padding:6px 10px"><span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;margin-right:8px">PLACEHOLDER</span>Photo: wide shot of the congregation mid-worship, bright natural light, candid</div>
+          <div style="position:absolute;left:64px;bottom:72px;max-width:760px;color:#F5F2EC;display:grid;gap:20px">
+            <div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">RCCG Christ Church Edmonton</div>
+            <h1 style="margin:0;font:800 56px/1.05 Montserrat,system-ui;letter-spacing:-.02em;text-shadow:0 1px 3px rgba(4,47,72,.6);text-wrap:pretty">Habitation of God's glory and the expression of His person <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px;vertical-align:middle;text-shadow:none">FINAL COPY</span></h1>
+            <p style="margin:0;font:300 22px/1.5 'Source Sans 3',system-ui;text-shadow:0 1px 2px rgba(4,47,72,.6)">A Pentecostal church family in south Edmonton, in person and online.</p>
+            <div style="display:flex;gap:12px;margin-top:8px">
+              <a href="#visit" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Plan Your Visit</a>
+              <a href="#watch" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486" style-focus="outline:2px solid #EF8C34;outline-offset:2px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Watch Online</a>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;background:#042F48;color:#F5F2EC;border-top:2px solid #403486">
+          <div style="padding:28px 40px 28px 64px;border-right:2px solid #403486;display:flex;gap:16px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#EF8C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#7373B5">SUNDAY SERVICE</div><div style="font:700 24px Montserrat,system-ui;letter-spacing:-.01em">10:00 AM</div></div></div>
+          <div style="padding:28px 40px;border-right:2px solid #403486;display:flex;gap:16px;align-items:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#EF8C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#7373B5">WHERE</div><div style="font:600 18px 'Source Sans 3',system-ui">2331 90B Street SW, Edmonton</div></div></div>
+          <div style="padding:28px 40px;border-right:2px solid #403486;display:flex;gap:16px;align-items:center"><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#7373B5">MIDWEEK</div><div style="font:600 18px 'Source Sans 3',system-ui;color:#E4E4EF">[confirm times and add midweek] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px;vertical-align:middle">CM</span></div></div></div>
+          <a href="#visit" style="display:flex;align-items:center;gap:10px;padding:0 64px 0 40px;color:#F5F2EC;font:700 14px Montserrat,system-ui;text-decoration:none" style-hover="background:#403486">Directions <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+        <div style="display:grid;grid-template-columns:5fr 7fr;gap:64px;padding:96px 64px;border-bottom:2px solid #042F48">
+          <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Welcome</div><h2 style="margin:12px 0 0;font:800 40px/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48;text-wrap:pretty">You are in the right place.</h2><span style="display:inline-block;margin-top:12px;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px">PLACEHOLDER HEADING</span></div>
+          <div><p style="margin:0;font:300 20px/1.65 'Source Sans 3',system-ui;text-wrap:pretty">Welcome to Christ Church Edmonton, a blessed Christian community center and a parish of the Redeemed Christian Church of God (RCCG). We joyfully hold prayer and worship services both in the sacred house of God and online, uniting hearts in praise and adoration. Our doors and hearts are wide open to receive you, no matter who you are or where you come from. If you've been thinking, praying, or searching for a church family to belong to, we believe the Holy Spirit has led you here—you are in the right place.</p><span style="display:inline-block;margin-top:16px;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px">FINAL COPY</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:2px solid #042F48">
+          <a href="#visit" style="display:grid;gap:16px;align-content:start;padding:40px 32px 40px 64px;border-right:2px solid #042F48;text-decoration:none;color:#042F48;min-height:220px" style-hover="background:#E4E4EF"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><div style="font:700 24px/1.2 Montserrat,system-ui;letter-spacing:-.01em">I'm New</div><div style="font-size:16px;line-height:1.5;color:#2B3540">Plan your first Sunday with us.</div><div style="font:700 14px Montserrat,system-ui;color:#403486;margin-top:auto">Plan your visit →</div></a>
+          <a href="#fellowships" style="display:grid;gap:16px;align-content:start;padding:40px 32px;border-right:2px solid #042F48;text-decoration:none;color:#042F48;min-height:220px" style-hover="background:#E4E4EF"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><div style="font:700 24px/1.2 Montserrat,system-ui;letter-spacing:-.01em">Join a House Fellowship</div><div style="font-size:16px;line-height:1.5;color:#2B3540">Small groups across south Edmonton.</div><div style="font:700 14px Montserrat,system-ui;color:#403486;margin-top:auto">Find one near you →</div></a>
+          <a href="#connect" style="display:grid;gap:16px;align-content:start;padding:40px 32px;border-right:2px solid #042F48;text-decoration:none;color:#042F48;min-height:220px" style-hover="background:#E4E4EF"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font:700 24px/1.2 Montserrat,system-ui;letter-spacing:-.01em">Request Prayer</div><div style="font-size:16px;line-height:1.5;color:#2B3540">Our prayer team will stand with you.</div><div style="font:700 14px Montserrat,system-ui;color:#403486;margin-top:auto">Send a request →</div></a>
+          <a href="#give" style="display:grid;gap:16px;align-content:start;padding:40px 64px 40px 32px;text-decoration:none;color:#042F48;min-height:220px" style-hover="background:#E4E4EF"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg><div style="font:700 24px/1.2 Montserrat,system-ui;letter-spacing:-.01em">Give</div><div style="font-size:16px;line-height:1.5;color:#2B3540">One-time or recurring, online or in person.</div><div style="font:700 14px Montserrat,system-ui;color:#403486;margin-top:auto">Give now →</div></a>
+        </div>
+        <div style="padding:80px 64px;border-bottom:2px solid #042F48">
+          <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:32px"><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Upcoming events</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">What's coming up</h2></div><a href="#events" style="font:700 14px Montserrat,system-ui;color:#403486;text-decoration:none;min-height:44px;display:inline-flex;align-items:center" style-hover="text-decoration:underline">See all events →</a></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#042F48;border:2px solid #042F48">
+            <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+              <a href="#events" style="background:#F5F2EC;display:grid;grid-template-columns:72px 1fr;gap:20px;padding:24px;text-decoration:none;color:#042F48;min-height:180px" style-hover="background:#E4E4EF">
+                <div style="width:72px;border:2px solid #042F48;text-align:center;align-self:start"><div style="background:#042F48;color:#F5F2EC;font:700 10px Montserrat,system-ui;letter-spacing:.2em;padding:4px 0">{{ e.mon }}</div><div style="font:800 28px/1.2 Montserrat,system-ui;padding:6px 0">{{ e.day }}</div></div>
+                <div style="display:grid;gap:8px;align-content:start"><span style="justify-self:start;font:700 10px Montserrat,system-ui;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px;background:{{ e.tagBg }};color:{{ e.tagFg }}">{{ e.tag }}</span><div style="font:700 20px/1.25 Montserrat,system-ui;letter-spacing:-.01em">{{ e.title }}</div><div style="font-size:15px;color:#2B3540">{{ e.time }} · {{ e.where }}</div></div>
+              </a>
+            </sc-for>
+          </div>
+          <span style="display:inline-block;margin-top:12px;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px">PLACEHOLDER EVENTS · pulled from calendar</span>
+        </div>
+        <div style="display:grid;grid-template-columns:7fr 5fr;border-bottom:2px solid #042F48">
+          <div style="aspect-ratio:16/9;background:#042F48;display:grid;place-items:center;color:#F5F2EC;position:relative;border-right:2px solid #042F48"><div style="width:88px;height:88px;border-radius:50%;background:#EF8C34;display:grid;place-items:center;color:#042F48"><svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div><div style="position:absolute;left:24px;top:24px;font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#7373B5">VIDEO EMBED · YOUTUBE</div></div>
+          <div style="padding:64px;display:grid;gap:16px;align-content:center"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Latest sermon</div><h2 style="margin:0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">[Sermon title] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px;vertical-align:middle">CM</span></h2><div style="font-size:16px;line-height:1.65">Pastor David Oladipo · Sunday 12 October 2026</div><div style="display:flex;gap:12px;margin-top:8px"><a href="#watch" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Watch more</a></div></div>
+        </div>
+        <div style="padding:80px 64px;border-bottom:2px solid #042F48">
+          <div style="margin-bottom:32px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Ministries</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">A place for every age and season</h2></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#042F48;border:2px solid #042F48">
+            <sc-for list="{{ ministries }}" as="m" hint-placeholder-count="7">
+              <a href="{{ m.href }}" style="background:{{ m.bg }};color:{{ m.fg }};border-top:8px solid {{ m.accent }};padding:28px 24px 24px;display:grid;gap:12px;align-content:start;min-height:230px;text-decoration:none" style-hover="filter:brightness(.96)">
+                <div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;text-transform:uppercase;color:{{ m.accentText }}">{{ m.kicker }}</div>
+                <div style="font:700 20px/1.2 Montserrat,system-ui;letter-spacing:-.01em">{{ m.name }}</div>
+                <p style="margin:0;font-size:15px;line-height:1.55">{{ m.desc }}</p>
+              </a>
+            </sc-for>
+            <div style="background:#042F48;color:#F5F2EC;padding:28px 24px;display:grid;align-content:end;gap:8px"><div style="font:700 20px/1.2 Montserrat,system-ui">Church Units</div><a href="#ministries" style="color:#EF8C34;font:700 14px Montserrat,system-ui;text-decoration:none">Serving teams →</a></div>
+          </div>
+          <div style="margin-top:12px;font-size:14px"><span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px;margin-right:8px">FINAL COPY</span>six descriptions final · <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px;margin:0 8px">CM</span>Couples one-liner</div>
+        </div>
+        <div style="background:#403486;color:#F5F2EC;padding:96px 64px;display:grid;grid-template-columns:1fr 2fr;gap:64px;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#E4E4EF">Verse of the day</div>
+          <div><p style="margin:0;font:italic 400 36px/1.35 'Cormorant Garamond',serif;text-wrap:pretty">“The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.”</p><div style="margin-top:20px;font:600 16px 'Source Sans 3',system-ui">Numbers 6:24–26 <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;margin-left:12px;vertical-align:middle">PLACEHOLDER · daily feed</span></div></div>
+        </div>
+        <div style="padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+          <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Stay connected</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">News and events, once a week</h2></div>
+          <form style="display:grid;grid-template-columns:1fr auto;gap:12px"><label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" placeholder="you@example.com" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label><button type="button" style="align-self:end;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;cursor:pointer" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">Subscribe</button></form>
+        </div>
+        <dc-import name="CCE Footer" hint-size="100%,420px"></dc-import>
+      </div>
+
+      <!-- Home mobile -->
+      <div style="width:390px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" mobile="{{ true }}" hint-size="100%,66px"></dc-import>
+        <div style="position:relative;height:560px;background:repeating-linear-gradient(45deg,#E4E4EF 0 14px,#D7D7E6 14px 28px);overflow:hidden">
+          <div style="position:absolute;inset:0;background:rgba(4,47,72,.2)"></div>
+          <div style="position:absolute;left:-180px;top:-200px;width:520px;height:520px;background:repeating-conic-gradient(from 0deg,rgba(239,140,52,.22) 0 2deg,transparent 2deg 11deg);border-radius:50%"></div>
+          <div style="position:absolute;left:20px;right:20px;bottom:28px;color:#F5F2EC;display:grid;gap:14px">
+            <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">RCCG Christ Church Edmonton</div>
+            <h1 style="margin:0;font:800 36px/1.08 Montserrat,system-ui;letter-spacing:-.02em;text-shadow:0 1px 3px rgba(4,47,72,.6);text-wrap:pretty">Habitation of God's glory and the expression of His person</h1>
+            <p style="margin:0;font:300 18px/1.5 'Source Sans 3',system-ui;text-shadow:0 1px 2px rgba(4,47,72,.6)">A Pentecostal church family in south Edmonton, in person and online.</p>
+            <div style="display:grid;gap:10px;margin-top:4px">
+              <a href="#visit" style="display:flex;align-items:center;min-height:48px;padding:0 20px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none">Plan Your Visit</a>
+              <a href="#watch" style="display:flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;color:#F5F2EC;border:2px solid #F5F2EC;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>Watch Online</a>
+            </div>
+          </div>
+        </div>
+        <div style="background:#042F48;color:#F5F2EC;padding:20px;display:grid;gap:14px;border-top:2px solid #403486">
+          <div style="display:flex;gap:12px;align-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF8C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><div><div style="font:700 10px Montserrat,system-ui;letter-spacing:.28em;color:#7373B5">SUNDAY SERVICE</div><div style="font:700 20px Montserrat,system-ui">10:00 AM</div></div></div>
+          <div style="display:flex;gap:12px;align-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF8C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><div style="font:600 16px 'Source Sans 3',system-ui">2331 90B Street SW</div></div>
+          <a href="#visit" style="display:flex;align-items:center;justify-content:space-between;min-height:44px;color:#F5F2EC;font:700 14px Montserrat,system-ui;text-decoration:none;border-top:1px solid #403486;padding-top:10px">Directions and midweek times <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
+        </div>
+        <div style="padding:56px 20px;border-bottom:2px solid #042F48;display:grid;gap:16px">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Welcome</div>
+          <h2 style="margin:0;font:800 32px/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">You are in the right place.</h2>
+          <p style="margin:0;font:400 17px/1.65 'Source Sans 3',system-ui;text-wrap:pretty">Welcome to Christ Church Edmonton, a blessed Christian community center and a parish of the Redeemed Christian Church of God (RCCG). We joyfully hold prayer and worship services both in the sacred house of God and online, uniting hearts in praise and adoration. Our doors and hearts are wide open to receive you, no matter who you are or where you come from. If you've been thinking, praying, or searching for a church family to belong to, we believe the Holy Spirit has led you here—you are in the right place.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#042F48;border-bottom:2px solid #042F48">
+          <a href="#visit" style="background:#F5F2EC;display:grid;gap:10px;align-content:start;padding:24px 20px;text-decoration:none;color:#042F48;min-height:150px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><div style="font:700 18px/1.2 Montserrat,system-ui">I'm New</div><div style="font:700 13px Montserrat,system-ui;color:#403486">Plan a visit →</div></a>
+          <a href="#fellowships" style="background:#F5F2EC;display:grid;gap:10px;align-content:start;padding:24px 20px;text-decoration:none;color:#042F48;min-height:150px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><div style="font:700 18px/1.2 Montserrat,system-ui">House Fellowship</div><div style="font:700 13px Montserrat,system-ui;color:#403486">Find one →</div></a>
+          <a href="#connect" style="background:#F5F2EC;display:grid;gap:10px;align-content:start;padding:24px 20px;text-decoration:none;color:#042F48;min-height:150px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><div style="font:700 18px/1.2 Montserrat,system-ui">Request Prayer</div><div style="font:700 13px Montserrat,system-ui;color:#403486">Send a request →</div></a>
+          <a href="#give" style="background:#F5F2EC;display:grid;gap:10px;align-content:start;padding:24px 20px;text-decoration:none;color:#042F48;min-height:150px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg><div style="font:700 18px/1.2 Montserrat,system-ui">Give</div><div style="font:700 13px Montserrat,system-ui;color:#403486">Give now →</div></a>
+        </div>
+        <div style="padding:48px 20px;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Upcoming events</div>
+          <h2 style="margin:8px 0 20px;font:700 26px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">What's coming up</h2>
+          <div style="display:grid;gap:2px;background:#042F48;border:2px solid #042F48">
+            <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+              <a href="#events" style="background:#F5F2EC;display:grid;grid-template-columns:60px 1fr;gap:16px;padding:16px;text-decoration:none;color:#042F48">
+                <div style="width:60px;border:2px solid #042F48;text-align:center;align-self:start"><div style="background:#042F48;color:#F5F2EC;font:700 9px Montserrat,system-ui;letter-spacing:.2em;padding:3px 0">{{ e.mon }}</div><div style="font:800 24px/1.2 Montserrat,system-ui;padding:4px 0">{{ e.day }}</div></div>
+                <div style="display:grid;gap:6px;align-content:start"><div style="font:700 17px/1.25 Montserrat,system-ui">{{ e.title }}</div><div style="font-size:14px">{{ e.time }} · {{ e.where }}</div></div>
+              </a>
+            </sc-for>
+          </div>
+          <a href="#events" style="display:inline-flex;align-items:center;min-height:44px;margin-top:12px;font:700 14px Montserrat,system-ui;color:#403486;text-decoration:none">See all events →</a>
+        </div>
+        <div style="border-bottom:2px solid #042F48">
+          <div style="aspect-ratio:16/9;background:#042F48;display:grid;place-items:center;color:#042F48"><div style="width:64px;height:64px;border-radius:50%;background:#EF8C34;display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></div></div>
+          <div style="padding:24px 20px 32px;display:grid;gap:10px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Latest sermon</div><h2 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">[Sermon title]</h2><div style="font-size:15px">Pastor David Oladipo · 12 Oct 2026</div><a href="#watch" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none;justify-self:start;margin-top:6px">Watch more</a></div>
+        </div>
+        <div style="padding:48px 20px;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Ministries</div>
+          <h2 style="margin:8px 0 20px;font:700 26px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">A place for every age and season</h2>
+          <div style="display:grid;gap:2px;background:#042F48;border:2px solid #042F48">
+            <sc-for list="{{ ministries }}" as="m" hint-placeholder-count="7">
+              <a href="{{ m.href }}" style="background:{{ m.bg }};color:{{ m.fg }};border-left:8px solid {{ m.accent }};padding:18px 20px;display:grid;gap:6px;text-decoration:none">
+                <div style="font:700 18px/1.2 Montserrat,system-ui">{{ m.name }}</div>
+                <p style="margin:0;font-size:15px;line-height:1.5">{{ m.desc }}</p>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#403486;color:#F5F2EC;padding:56px 20px;display:grid;gap:16px;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#E4E4EF">Verse of the day</div>
+          <p style="margin:0;font:italic 400 26px/1.35 'Cormorant Garamond',serif;text-wrap:pretty">“The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace.”</p>
+          <div style="font:600 15px 'Source Sans 3',system-ui">Numbers 6:24–26</div>
+        </div>
+        <div style="padding:48px 20px;display:grid;gap:16px">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Stay connected</div>
+          <h2 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">News and events, once a week</h2>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" placeholder="you@example.com" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <button type="button" style="min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-align:left;cursor:pointer">Subscribe</button>
+        </div>
+        <dc-import name="CCE Footer" mobile="{{ true }}" hint-size="100%,900px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PLAN YOUR VISIT ============ -->
+  <div id="visit" data-screen-label="Plan Your Visit" style="display:grid;gap:16px">
+    <div style="display:flex;gap:16px;align-items:center"><span style="font:800 13px Montserrat,system-ui;background:#042F48;color:#F5F2EC;padding:6px 10px">1b</span><h2 style="margin:0;font:700 24px Montserrat,system-ui;color:#042F48">I'm New · Plan Your Visit</h2></div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <div style="width:1440px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" hint-size="100%,90px"></dc-import>
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #042F48">
+          <div style="padding:120px 64px;display:grid;gap:20px;align-content:center"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">I'm new</div><h1 style="margin:0;font:800 56px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">We'd love to meet you.</h1><p style="margin:0;font:300 20px/1.65 'Source Sans 3',system-ui;max-width:48ch">Everything you need for a first Sunday: where to park, what happens in the service, and where your children go. <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;vertical-align:middle">PLACEHOLDER</span></p><a href="#visitform" style="justify-self:start;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none;margin-top:8px" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">Let us know you're coming</a></div>
+          <div style="min-height:560px;background:repeating-linear-gradient(45deg,#E4E4EF 0 14px,#D7D7E6 14px 28px);border-left:2px solid #042F48;display:grid;place-items:center;padding:24px;text-align:center;font:600 14px 'Source Sans 3',system-ui;color:#042F48"><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;margin-bottom:8px">PHOTO</div>Warm shot: greeters welcoming a family at the door</div></div>
+        </div>
+        <div style="padding:80px 64px 40px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">What to expect</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">Three simple steps</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #042F48;border-bottom:2px solid #042F48">
+          <div style="padding:40px 40px 48px 64px;border-right:2px solid #042F48;display:grid;gap:16px;align-content:start"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">01</div><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">Arrive and park</h3><p style="margin:0;font-size:16px;line-height:1.65">Free parking on site. Doors open 30 minutes before the service and a greeter will point you to seating and the children's check-in.</p></div>
+          <div style="padding:40px;border-right:2px solid #042F48;display:grid;gap:16px;align-content:start"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">02</div><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">Worship with us</h3><p style="margin:0;font-size:16px;line-height:1.65">Lively praise, prayer and a Bible-based message. Services run about two hours and are also streamed online.</p></div>
+          <div style="padding:40px 64px 48px 40px;display:grid;gap:16px;align-content:start"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v2"></path><path d="M14 2v2"></path><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"></path><path d="M6 2v2"></path></svg><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">03</div><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">Connect after service</h3><p style="margin:0;font-size:16px;line-height:1.65">Stay for refreshments, meet a pastor at the welcome desk, and fill in a first-timer card so we can follow up.</p></div>
+        </div>
+        <div style="padding:12px 64px;font-size:14px"><span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;margin-right:8px">PLACEHOLDER</span>step descriptions are drafts; confirm service length and refreshments</div>
+        <div style="display:grid;grid-template-columns:5fr 7fr;border-top:2px solid #042F48;border-bottom:2px solid #042F48">
+          <div style="padding:64px;display:grid;gap:24px;align-content:start;border-right:2px solid #042F48">
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Service times and location</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">Sundays at 10:00 AM</h2></div>
+            <div style="display:grid;gap:4px;font-size:16px;line-height:1.65"><strong style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Midweek</strong><span>[confirm midweek service day and time] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM</span></span></div>
+            <address style="font-style:normal;font-size:16px;line-height:1.65">2331 90B Street SW<br>Edmonton, AB T6X 1V6</address>
+            <div style="display:grid;gap:12px;border-top:2px solid #042F48;padding-top:20px">
+              <div style="display:flex;gap:12px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg><p style="margin:0;font-size:16px;line-height:1.5"><strong style="font-weight:600">Parking:</strong> free on-site lot; overflow on 90B Street. [confirm]</p></div>
+              <div style="display:flex;gap:12px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#403486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="16" cy="4" r="1"></circle><path d="m18 19 1-7-6 1"></path><path d="m5 8 3-3 5.5 3-2.36 3.5"></path><path d="M4.24 14.5a5 5 0 0 0 6.88 6"></path><path d="M13.76 17.5a5 5 0 0 0-6.88-6"></path></svg><p style="margin:0;font-size:16px;line-height:1.5"><strong style="font-weight:600">Accessibility:</strong> step-free entrance, accessible washrooms, reserved seating on request. [confirm]</p></div>
+            </div>
+            <a href="#" style="justify-self:start;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Get directions</a>
+          </div>
+          <div style="min-height:520px;background:#E4E4EF;display:grid;place-items:center;color:#042F48;font:700 11px Montserrat,system-ui;letter-spacing:.28em;background-image:linear-gradient(rgba(4,47,72,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(4,47,72,.08) 1px,transparent 1px);background-size:40px 40px">MAP EMBED · GOOGLE MAPS</div>
+        </div>
+        <div style="padding:80px 64px 32px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Children and youth</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">Your children are looked after</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#042F48;margin:0 64px 80px;border:2px solid #042F48">
+          <a href="#genesis" style="background:#fff;color:#1A1A1B;padding:32px;display:grid;gap:10px;align-content:start;text-decoration:none;border-top:8px solid #E72F24;border-radius:0"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#E72F24">CHILDREN</div><div style="font:700 22px/1.2 Montserrat,system-ui">Genesis Church</div><p style="margin:0;font-size:15px;line-height:1.55">A fun, faith-based environment for children to learn about Jesus through interactive activities.</p><span style="font:700 14px Montserrat,system-ui;color:#E72F24">Check-in and safety →</span></a>
+          <a href="#discovery" style="background:#1A1A1B;color:#fff;padding:32px;display:grid;gap:10px;align-content:start;text-decoration:none;border-top:8px solid #00CEC9"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#00CEC9">GRADES 7–12</div><div style="font:800 22px/1.2 Montserrat,system-ui;text-transform:uppercase">Discovery Centre</div><p style="margin:0;font-size:15px;line-height:1.55">Empowering teens to grow in faith, leadership, and service, while building strong connections with peers.</p><span style="font:700 14px Montserrat,system-ui;color:#00CEC9">Sundays 10am →</span></a>
+          <a href="#lighthouse" style="background:#F9F7F2;color:#1A1A1B;padding:32px;display:grid;gap:10px;align-content:start;text-decoration:none;border-top:8px solid #D4AF37"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#8A6D1D">YOUNG ADULTS</div><div style="font:700 22px/1.2 Montserrat,system-ui">Lighthouse Christ Church</div><p style="margin:0;font-size:15px;line-height:1.55">Supporting young adults in their faith journey, fostering fellowship and spiritual growth.</p><span style="font:700 14px Montserrat,system-ui;color:#8A6D1D">Learn more →</span></a>
+        </div>
+        <div style="display:grid;grid-template-columns:4fr 8fr;gap:64px;padding:80px 64px;border-top:2px solid #042F48;border-bottom:2px solid #042F48">
+          <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">FAQ</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">Common questions</h2><span style="display:inline-block;margin-top:16px;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px">PLACEHOLDER ANSWERS</span></div>
+          <div style="border-top:2px solid #042F48">
+            <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+              <details style="border-bottom:2px solid #042F48" open="{{ f.open }}"><summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:64px;font:600 18px Montserrat,system-ui;color:#042F48;padding:8px 0">{{ f.q }}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></summary><p style="margin:0 0 24px;font-size:16px;line-height:1.65;max-width:60ch">{{ f.a }}</p></details>
+            </sc-for>
+          </div>
+        </div>
+        <div id="visitform" style="display:grid;grid-template-columns:4fr 8fr;gap:64px;padding:80px 64px">
+          <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Let us know you're coming</div><h2 style="margin:8px 0 16px;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">We'll save you a seat</h2><p style="margin:0;font-size:16px;line-height:1.65">Tell us a little about who's coming and a greeter will look out for you.</p></div>
+          <form style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">First name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Last name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Phone<input type="tel" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Number of guests<input type="number" value="2" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Planned date<input type="date" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+            <label style="grid-column:1/-1;display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Message <span style="font-weight:400;color:#2B3540">(optional)</span><textarea rows="4" style="border:2px solid #042F48;border-radius:4px;background:#fff;padding:12px 14px;font:400 16px/1.5 'Source Sans 3',system-ui;resize:vertical" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></textarea></label>
+            <button type="button" style="justify-self:start;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;cursor:pointer;text-align:left" style-hover="background:#403486;border-color:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">I'm coming</button>
+          </form>
+        </div>
+        <dc-import name="CCE Footer" hint-size="100%,420px"></dc-import>
+      </div>
+
+      <!-- Visit mobile -->
+      <div style="width:390px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" mobile="{{ true }}" hint-size="100%,66px"></dc-import>
+        <div style="height:260px;background:repeating-linear-gradient(45deg,#E4E4EF 0 14px,#D7D7E6 14px 28px);display:grid;place-items:center;text-align:center;padding:20px;font:600 14px 'Source Sans 3',system-ui;color:#042F48;border-bottom:2px solid #042F48"><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;margin-bottom:8px">PHOTO</div>Greeters welcoming a family</div></div>
+        <div style="padding:40px 20px;display:grid;gap:16px;border-bottom:2px solid #042F48"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">I'm new</div><h1 style="margin:0;font:800 40px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">We'd love to meet you.</h1><p style="margin:0;font:400 17px/1.65 'Source Sans 3',system-ui">Everything you need for a first Sunday: where to park, what happens in the service, and where your children go.</p><a href="#visitform" style="display:flex;align-items:center;min-height:48px;padding:0 20px;background:#EF8C34;color:#042F48;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none">Let us know you're coming</a></div>
+        <div style="padding:40px 20px 8px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">What to expect</div><h2 style="margin:8px 0 0;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">Three simple steps</h2></div>
+        <div style="display:grid;border-bottom:2px solid #042F48">
+          <div style="padding:24px 20px;border-top:2px solid #042F48;display:grid;grid-template-columns:40px 1fr;gap:16px"><div style="font:800 24px Montserrat,system-ui;color:#7373B5">01</div><div><h3 style="margin:0 0 6px;font:700 20px/1.2 Montserrat,system-ui;color:#042F48">Arrive and park</h3><p style="margin:0;font-size:16px;line-height:1.6">Free parking on site. Doors open 30 minutes before the service.</p></div></div>
+          <div style="padding:24px 20px;border-top:2px solid #042F48;display:grid;grid-template-columns:40px 1fr;gap:16px"><div style="font:800 24px Montserrat,system-ui;color:#7373B5">02</div><div><h3 style="margin:0 0 6px;font:700 20px/1.2 Montserrat,system-ui;color:#042F48">Worship with us</h3><p style="margin:0;font-size:16px;line-height:1.6">Lively praise, prayer and a Bible-based message, about two hours.</p></div></div>
+          <div style="padding:24px 20px;border-top:2px solid #042F48;display:grid;grid-template-columns:40px 1fr;gap:16px"><div style="font:800 24px Montserrat,system-ui;color:#7373B5">03</div><div><h3 style="margin:0 0 6px;font:700 20px/1.2 Montserrat,system-ui;color:#042F48">Connect after service</h3><p style="margin:0;font-size:16px;line-height:1.6">Refreshments, a pastor at the welcome desk, a first-timer card.</p></div></div>
+        </div>
+        <div style="padding:40px 20px;display:grid;gap:14px;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Service times and location</div>
+          <h2 style="margin:0;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">Sundays at 10:00 AM</h2>
+          <div style="font-size:16px;line-height:1.6">Midweek: [confirm] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM</span></div>
+          <div style="height:200px;background:#E4E4EF;display:grid;place-items:center;color:#042F48;font:700 11px Montserrat,system-ui;letter-spacing:.28em;background-image:linear-gradient(rgba(4,47,72,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(4,47,72,.08) 1px,transparent 1px);background-size:32px 32px">MAP EMBED</div>
+          <address style="font-style:normal;font-size:16px;line-height:1.6">2331 90B Street SW, Edmonton, AB T6X 1V6</address>
+          <p style="margin:0;font-size:15px;line-height:1.5"><strong style="font-weight:600">Parking:</strong> free on-site lot. <strong style="font-weight:600">Accessibility:</strong> step-free entrance, accessible washrooms.</p>
+          <a href="#" style="display:flex;align-items:center;min-height:48px;padding:0 20px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none">Get directions</a>
+        </div>
+        <div style="padding:40px 20px 0"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Children and youth</div><h2 style="margin:8px 0 16px;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">Your children are looked after</h2></div>
+        <div style="display:grid;gap:2px;background:#042F48;margin:0 20px 40px;border:2px solid #042F48">
+          <a href="#genesis" style="background:#fff;color:#1A1A1B;padding:20px;border-left:8px solid #E72F24;text-decoration:none;display:grid;gap:4px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#E72F24">CHILDREN</div><div style="font:700 18px Montserrat,system-ui">Genesis Church</div></a>
+          <a href="#discovery" style="background:#1A1A1B;color:#fff;padding:20px;border-left:8px solid #00CEC9;text-decoration:none;display:grid;gap:4px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#00CEC9">GRADES 7–12</div><div style="font:800 18px Montserrat,system-ui;text-transform:uppercase">Discovery Centre</div></a>
+          <a href="#lighthouse" style="background:#F9F7F2;color:#1A1A1B;padding:20px;border-left:8px solid #D4AF37;text-decoration:none;display:grid;gap:4px"><div style="font:700 10px Montserrat,system-ui;letter-spacing:.2em;color:#8A6D1D">YOUNG ADULTS</div><div style="font:700 18px Montserrat,system-ui">Lighthouse Christ Church</div></a>
+        </div>
+        <div style="padding:40px 20px;border-top:2px solid #042F48;border-bottom:2px solid #042F48">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">FAQ</div>
+          <h2 style="margin:8px 0 20px;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">Common questions</h2>
+          <div style="border-top:2px solid #042F48">
+            <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+              <details style="border-bottom:2px solid #042F48"><summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;font:600 16px Montserrat,system-ui;color:#042F48;padding:8px 0">{{ f.q }}<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="m6 9 6 6 6-6"></path></svg></summary><p style="margin:0 0 20px;font-size:16px;line-height:1.6">{{ f.a }}</p></details>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:40px 20px;display:grid;gap:16px">
+          <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Let us know you're coming</div>
+          <h2 style="margin:0;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">We'll save you a seat</h2>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">First name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Last name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Phone<input type="tel" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Guests<input type="number" value="2" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;min-width:0"></label><label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Planned date<input type="date" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;min-width:0"></label></div>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Message<textarea rows="3" style="border:2px solid #042F48;border-radius:4px;background:#fff;padding:12px 14px;font:400 16px/1.5 'Source Sans 3',system-ui"></textarea></label>
+          <button type="button" style="min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-align:left;cursor:pointer">I'm coming</button>
+        </div>
+        <dc-import name="CCE Footer" mobile="{{ true }}" hint-size="100%,900px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ GIVE ============ -->
+  <div id="give" data-screen-label="Give" style="display:grid;gap:16px">
+    <div style="display:flex;gap:16px;align-items:center"><span style="font:800 13px Montserrat,system-ui;background:#042F48;color:#F5F2EC;padding:6px 10px">1c</span><h2 style="margin:0;font:700 24px Montserrat,system-ui;color:#042F48">Give</h2></div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <div style="width:1440px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" hint-size="100%,90px"></dc-import>
+        <div style="background:#042F48;color:#F5F2EC;padding:96px 64px;position:relative;overflow:hidden;border-bottom:2px solid #403486">
+          <div style="position:absolute;right:-160px;top:-240px;width:640px;height:640px;background:repeating-conic-gradient(from 0deg,rgba(239,140,52,.16) 0 2deg,transparent 2deg 11deg);border-radius:50%"></div>
+          <div style="position:relative;max-width:760px;display:grid;gap:20px"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">Give</div><h1 style="margin:0;font:800 56px/1.05 Montserrat,system-ui;letter-spacing:-.02em">A sweet smelling savour</h1><p style="margin:0;font:300 20px/1.65 'Source Sans 3',system-ui;color:#E4E4EF;text-wrap:pretty">Thank you for considering a gift of any amount to the Ministry of RCCG Christ Church Edmonton. May it be a sweet smelling savor to our God yielding bountiful blessings to you and yours in the name of Jesus! Amen.</p><div><span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px">FINAL COPY · paragraph</span> <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;margin-left:8px">PLACEHOLDER · heading</span></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:7fr 5fr;border-bottom:2px solid #042F48">
+          <div style="padding:64px;border-right:2px solid #042F48;display:grid;gap:28px;align-content:start">
+            <div style="display:grid;grid-template-columns:1fr 1fr;border:2px solid #042F48;border-radius:4px;overflow:hidden;max-width:360px"><button type="button" style="min-height:48px;background:#042F48;color:#F5F2EC;border:0;font:700 14px Montserrat,system-ui;cursor:pointer">One-time</button><button type="button" style="min-height:48px;background:#F5F2EC;color:#042F48;border:0;font:700 14px Montserrat,system-ui;cursor:pointer" style-hover="background:#E4E4EF">Recurring</button></div>
+            <div style="display:grid;gap:10px"><div style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Amount (CAD)</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+              <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="5"><button type="button" style="min-height:52px;border:2px solid #042F48;border-radius:4px;background:{{ a.bg }};color:{{ a.fg }};font:700 18px Montserrat,system-ui;cursor:pointer" style-hover="background:#403486;color:#F5F2EC;border-color:#403486">{{ a.label }}</button></sc-for>
+            </div><input type="text" placeholder="Other amount" style="height:52px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 18px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></div>
+            <div style="display:grid;gap:10px"><div style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Fund</div><div style="display:flex;flex-wrap:wrap;gap:10px">
+              <sc-for list="{{ funds }}" as="fund" hint-placeholder-count="5"><button type="button" style="min-height:44px;padding:0 16px;border:2px solid #042F48;border-radius:4px;background:{{ fund.bg }};color:{{ fund.fg }};font:600 15px 'Source Sans 3',system-ui;cursor:pointer" style-hover="background:#E4E4EF">{{ fund.label }}</button></sc-for>
+            </div></div>
+            <div style="min-height:220px;border:2px dashed #7373B5;display:grid;place-items:center;text-align:center;padding:24px;color:#042F48"><div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;margin-bottom:8px">PAYMENT PROVIDER EMBED</div><div style="font-size:15px;line-height:1.5">Tithe.ly / CanadaHelps / Stripe form mounts here.<br>Card, Interac e-Transfer, Apple Pay.</div><span style="display:inline-block;margin-top:10px;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM · confirm provider</span></div></div>
+            <button type="button" style="justify-self:start;min-height:56px;padding:0 28px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 16px/1 Montserrat,system-ui;cursor:pointer;text-align:left" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">Give $100 to General</button>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(4,47,72,.8)">RCCG Christ Church Edmonton is a registered Canadian charity. Official donation receipts for income tax purposes are issued annually in February for gifts of $20 or more. <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM · confirm wording and charity number</span></p>
+          </div>
+          <div style="padding:64px;display:grid;gap:32px;align-content:start;background:#E4E4EF">
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Why we give</div><p style="margin:12px 0 0;font:italic 400 28px/1.35 'Cormorant Garamond',serif;color:#042F48">“Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.”</p><div style="margin-top:12px;font:600 15px 'Source Sans 3',system-ui;color:#042F48">2 Corinthians 9:7</div></div>
+            <a href="#" style="font:700 14px Montserrat,system-ui;color:#403486;text-decoration:none;min-height:44px;display:inline-flex;align-items:center" style-hover="text-decoration:underline">Read why we give →</a>
+            <div style="border-top:2px solid #042F48;padding-top:24px;display:grid;gap:8px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Specific giving</div><p style="margin:0;font-size:16px;line-height:1.6">Building fund, missions, and designated projects. Choose a fund above or <a href="#">see current projects</a>.</p></div>
+          </div>
+        </div>
+        <div style="padding:80px 64px 32px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Ways to give</div><h2 style="margin:8px 0 0;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">Online, in person, or by cheque</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #042F48;margin-bottom:0">
+          <div style="padding:40px 40px 56px 64px;border-right:2px solid #042F48;display:grid;gap:12px;align-content:start"><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">In Person</h3><p style="margin:0;font-size:16px;line-height:1.65">Give during a church service or through a visit to the church office.</p><span style="justify-self:start;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px">FINAL COPY</span></div>
+          <div style="padding:40px;border-right:2px solid #042F48;display:grid;gap:12px;align-content:start"><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">Give Online</h3><p style="margin:0;font-size:16px;line-height:1.65">Use the secure form above for a one-time or recurring gift. [Interac e-Transfer email if offered] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM</span></p></div>
+          <div style="padding:40px 64px 56px 40px;display:grid;gap:12px;align-content:start"><h3 style="margin:0;font:700 24px/1.2 Montserrat,system-ui;color:#042F48">Cheque</h3><p style="margin:0;font-size:16px;line-height:1.65">Mail cheques to: RCCG Christ Church, 2331 90B Street SW, Edmonton, AB T6X 1V6</p><span style="justify-self:start;font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px">FINAL COPY</span></div>
+        </div>
+        <dc-import name="CCE Footer" hint-size="100%,420px"></dc-import>
+      </div>
+
+      <!-- Give mobile -->
+      <div style="width:390px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" mobile="{{ true }}" hint-size="100%,66px"></dc-import>
+        <div style="background:#042F48;color:#F5F2EC;padding:48px 20px;display:grid;gap:14px;border-bottom:2px solid #403486"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">Give</div><h1 style="margin:0;font:800 36px/1.08 Montserrat,system-ui;letter-spacing:-.02em">A sweet smelling savour</h1><p style="margin:0;font:400 17px/1.6 'Source Sans 3',system-ui;color:#E4E4EF">Thank you for considering a gift of any amount to the Ministry of RCCG Christ Church Edmonton. May it be a sweet smelling savor to our God yielding bountiful blessings to you and yours in the name of Jesus! Amen.</p></div>
+        <div style="padding:32px 20px;display:grid;gap:20px;border-bottom:2px solid #042F48">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border:2px solid #042F48;border-radius:4px;overflow:hidden"><button type="button" style="min-height:48px;background:#042F48;color:#F5F2EC;border:0;font:700 14px Montserrat,system-ui">One-time</button><button type="button" style="min-height:48px;background:#F5F2EC;color:#042F48;border:0;font:700 14px Montserrat,system-ui">Recurring</button></div>
+          <div style="display:grid;gap:10px"><div style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Amount (CAD)</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <sc-for list="{{ amounts }}" as="a" hint-placeholder-count="5"><button type="button" style="min-height:48px;border:2px solid #042F48;border-radius:4px;background:{{ a.bg }};color:{{ a.fg }};font:700 16px Montserrat,system-ui">{{ a.label }}</button></sc-for>
+            <input type="text" placeholder="Other" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 12px;font:400 16px 'Source Sans 3',system-ui;min-width:0">
+          </div></div>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Fund<select style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 12px;font:400 16px 'Source Sans 3',system-ui"><option>General</option><option>Tithe</option><option>Building</option><option>Missions</option><option>Specific Giving</option></select></label>
+          <div style="min-height:160px;border:2px dashed #7373B5;display:grid;place-items:center;text-align:center;padding:16px;color:#042F48;font:700 11px Montserrat,system-ui;letter-spacing:.28em">PAYMENT PROVIDER EMBED</div>
+          <button type="button" style="min-height:52px;padding:0 20px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-align:left">Give $100 to General</button>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:rgba(4,47,72,.8)">Registered Canadian charity. Tax receipts issued annually in February. [confirm]</p>
+        </div>
+        <div style="background:#E4E4EF;padding:40px 20px;display:grid;gap:12px;border-bottom:2px solid #042F48"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Why we give</div><p style="margin:0;font:italic 400 24px/1.35 'Cormorant Garamond',serif;color:#042F48">“God loves a cheerful giver.”</p><div style="font:600 15px 'Source Sans 3',system-ui;color:#042F48">2 Corinthians 9:7</div></div>
+        <div style="padding:40px 20px 8px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Ways to give</div></div>
+        <div style="display:grid">
+          <div style="padding:20px;border-top:2px solid #042F48;display:grid;gap:6px"><h3 style="margin:0;font:700 20px Montserrat,system-ui;color:#042F48">In Person</h3><p style="margin:0;font-size:16px;line-height:1.6">Give during a church service or through a visit to the church office.</p></div>
+          <div style="padding:20px;border-top:2px solid #042F48;display:grid;gap:6px"><h3 style="margin:0;font:700 20px Montserrat,system-ui;color:#042F48">Give Online</h3><p style="margin:0;font-size:16px;line-height:1.6">Use the secure form above.</p></div>
+          <div style="padding:20px 20px 40px;border-top:2px solid #042F48;display:grid;gap:6px"><h3 style="margin:0;font:700 20px Montserrat,system-ui;color:#042F48">Cheque</h3><p style="margin:0;font-size:16px;line-height:1.6">Mail cheques to: RCCG Christ Church, 2331 90B Street SW, Edmonton, AB T6X 1V6</p></div>
+        </div>
+        <dc-import name="CCE Footer" mobile="{{ true }}" hint-size="100%,900px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONNECT / PRAYER ============ -->
+  <div id="connect" data-screen-label="Connect hub with Prayer Request" style="display:grid;gap:16px">
+    <div style="display:flex;gap:16px;align-items:center"><span style="font:800 13px Montserrat,system-ui;background:#042F48;color:#F5F2EC;padding:6px 10px">1d</span><h2 style="margin:0;font:700 24px Montserrat,system-ui;color:#042F48">Connect · Contact hub, Prayer Request open</h2></div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <div style="width:1440px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" hint-size="100%,90px"></dc-import>
+        <div style="display:grid;grid-template-columns:7fr 5fr;border-bottom:2px solid #042F48">
+          <div style="padding:96px 64px;display:grid;gap:20px;align-content:center;border-right:2px solid #042F48"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Connect</div><h1 style="margin:0;font:800 56px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Get in touch</h1><p style="margin:0;font:300 20px/1.65 'Source Sans 3',system-ui;max-width:52ch">We'd love to hear from you, please contact us by completing any of the forms below. <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px;vertical-align:middle">FINAL COPY</span></p></div>
+          <div style="padding:64px;display:grid;gap:20px;align-content:center;background:#E4E4EF;font-size:16px;line-height:1.65">
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">ADDRESS</div>2331 90B Street SW, Edmonton AB T6X 1V6</div>
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">PHONE</div><a href="tel:+15875980316" style="color:#042F48;font-weight:600;text-decoration:none">(587) 598-0316</a></div>
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">EMAIL</div><a href="mailto:info@rccgchristchurch.ca" style="color:#042F48;font-weight:600;text-decoration:none">info@rccgchristchurch.ca</a></div>
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">OFFICE HOURS</div>[Mon–Fri, times] <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#BE185D;color:#fff;border-radius:2px">CM</span></div>
+            <div style="height:160px;background:#F5F2EC;display:grid;place-items:center;color:#042F48;font:700 11px Montserrat,system-ui;letter-spacing:.28em;border:2px solid #042F48;background-image:linear-gradient(rgba(4,47,72,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(4,47,72,.08) 1px,transparent 1px);background-size:32px 32px">MAP EMBED</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:320px 1fr;border-bottom:2px solid #042F48">
+          <nav aria-label="Forms" style="border-right:2px solid #042F48;display:grid;align-content:start">
+            <div style="padding:32px 32px 12px 64px;font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Choose a form</div>
+            <sc-for list="{{ forms }}" as="fm" hint-placeholder-count="9">
+              <a href="#connect" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 24px 0 64px;text-decoration:none;font:600 16px 'Source Sans 3',system-ui;color:{{ fm.fg }};background:{{ fm.bg }};border-top:1px solid #042F48" style-hover="background:#E4E4EF">{{ fm.label }}</a>
+            </sc-for>
+          </nav>
+          <div style="padding:64px;display:grid;gap:40px">
+            <div><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Prayer request</div><h2 style="margin:8px 0 12px;font:700 32px/1.15 Montserrat,system-ui;color:#042F48">How can we pray for you?</h2><p style="margin:0;font-size:16px;line-height:1.65;max-width:60ch">Our prayer team prays over every request. Share as much or as little as you like; requests are kept confidential. <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#B45309;color:#fff;border-radius:2px;vertical-align:middle">PLACEHOLDER</span></p></div>
+            <form style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px">
+              <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">First name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+              <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Last name <span style="font-weight:400;color:#2B3540">(optional)</span><input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+              <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+              <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Phone <span style="font-weight:400;color:#2B3540">(optional)</span><input type="tel" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></label>
+              <label style="grid-column:1/-1;display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Your prayer request<textarea rows="6" style="border:2px solid #042F48;border-radius:4px;background:#fff;padding:12px 14px;font:400 16px/1.5 'Source Sans 3',system-ui;resize:vertical" style-focus="outline:2px solid #EF8C34;outline-offset:2px"></textarea></label>
+              <fieldset style="grid-column:1/-1;border:0;padding:0;margin:0;display:grid;gap:10px"><legend style="font:600 16px 'Source Sans 3',system-ui;color:#042F48;padding:0;margin-bottom:4px">Do you want a Pastor to reach out to you?</legend><div style="display:flex;gap:12px"><label style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:2px solid #042F48;border-radius:4px;background:#042F48;color:#F5F2EC;font:600 16px 'Source Sans 3',system-ui;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #F5F2EC;display:grid;place-items:center"><span style="width:8px;height:8px;border-radius:50%;background:#EF8C34"></span></span>Yes</label><label style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:2px solid #042F48;border-radius:4px;color:#042F48;font:600 16px 'Source Sans 3',system-ui;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #042F48"></span>No</label></div></fieldset>
+              <label style="grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:#2B3540"><input type="checkbox" style="width:20px;height:20px;margin:2px 0 0;accent-color:#403486">You may share this request with the prayer team. Uncheck to keep it between you and the pastors only.</label>
+              <button type="button" style="justify-self:start;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;cursor:pointer;text-align:left" style-hover="background:#403486;border-color:#403486;color:#F5F2EC" style-focus="outline:2px solid #EF8C34;outline-offset:2px">Send prayer request</button>
+            </form>
+            <div style="border-top:2px solid #042F48;padding-top:32px;display:grid;gap:16px;max-width:760px">
+              <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Same pattern · First Timer</div>
+              <p style="margin:0;font-size:16px;line-height:1.65">Complete this form if this is your first time attending our service either in-person or online. <span style="font:700 9px/1 Montserrat,system-ui;letter-spacing:.1em;padding:4px 6px;background:#1B7F4C;color:#fff;border-radius:2px;vertical-align:middle">FINAL COPY</span></p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:15px;color:#042F48"><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">First name</div><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">Last name</div><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">Email</div><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">Phone</div><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">Attended: In person / Online</div><div style="height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">Date attended</div><div style="grid-column:1/-1;height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">How did you hear about us?</div><div style="grid-column:1/-1;height:44px;border:2px solid #7373B5;border-radius:4px;display:flex;align-items:center;padding:0 12px;color:#403486">I'd like: a call from a pastor / info on House Fellowships / children's programs</div></div>
+              <p style="margin:0;font-size:14px;color:rgba(4,47,72,.8)">Other forms (New Believer, Ask Pastor, Join Workforce, Baby Dedication, Special Thanksgiving, Praise Report) reuse this layout: intro line, 4–8 fields, one amber submit.</p>
+            </div>
+          </div>
+        </div>
+        <dc-import name="CCE Footer" hint-size="100%,420px"></dc-import>
+      </div>
+
+      <!-- Connect mobile -->
+      <div style="width:390px;flex:none;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;border:2px solid #042F48">
+        <dc-import name="CCE Header" mobile="{{ true }}" hint-size="100%,66px"></dc-import>
+        <div style="padding:40px 20px;display:grid;gap:14px;border-bottom:2px solid #042F48"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Connect</div><h1 style="margin:0;font:800 40px/1.05 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">Get in touch</h1><p style="margin:0;font:400 17px/1.6 'Source Sans 3',system-ui">We'd love to hear from you, please contact us by completing any of the forms below.</p></div>
+        <div style="padding:20px;display:grid;gap:8px;border-bottom:2px solid #042F48;background:#E4E4EF;font-size:15px;line-height:1.5"><div><strong style="font-weight:600;color:#042F48">2331 90B Street SW</strong>, Edmonton AB T6X 1V6</div><a href="tel:+15875980316" style="color:#042F48;font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center">(587) 598-0316</a><a href="mailto:info@rccgchristchurch.ca" style="color:#042F48;font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center">info@rccgchristchurch.ca</a></div>
+        <div style="padding:24px 20px 0;display:grid;gap:8px"><div style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Choose a form</div><div style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font:400 16px 'Source Sans 3',system-ui;color:#2B3540">Prayer Request <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#042F48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div></div>
+        <div style="padding:32px 20px;display:grid;gap:16px;border-bottom:2px solid #042F48">
+          <h2 style="margin:0;font:700 26px/1.15 Montserrat,system-ui;color:#042F48">How can we pray for you?</h2>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">First name<input type="text" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Email<input type="email" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Phone <span style="font-weight:400">(optional)</span><input type="tel" style="height:48px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 16px 'Source Sans 3',system-ui"></label>
+          <label style="display:grid;gap:6px;font:600 16px 'Source Sans 3',system-ui;color:#042F48">Your prayer request<textarea rows="5" style="border:2px solid #042F48;border-radius:4px;background:#fff;padding:12px 14px;font:400 16px/1.5 'Source Sans 3',system-ui"></textarea></label>
+          <div style="display:grid;gap:8px"><div style="font:600 16px 'Source Sans 3',system-ui;color:#042F48">Do you want a Pastor to reach out to you?</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><span style="display:flex;align-items:center;justify-content:center;min-height:48px;border:2px solid #042F48;border-radius:4px;background:#042F48;color:#F5F2EC;font:600 16px 'Source Sans 3',system-ui">Yes</span><span style="display:flex;align-items:center;justify-content:center;min-height:48px;border:2px solid #042F48;border-radius:4px;color:#042F48;font:600 16px 'Source Sans 3',system-ui">No</span></div></div>
+          <button type="button" style="min-height:52px;padding:0 20px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-align:left">Send prayer request</button>
+        </div>
+        <dc-import name="CCE Footer" mobile="{{ true }}" hint-size="100%,900px"></dc-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ROUND 2 STUBS ============ -->
+  <div style="display:grid;gap:12px;max-width:900px">
+    <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Coming in later rounds</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span id="about" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">About · Our Story · Values · Leadership</span>
+      <span id="worship" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">Worship</span>
+      <span id="fellowships" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">House Fellowships</span>
+      <span id="ministries" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">Ministries landing · Church Units</span>
+      <span id="genesis" style="padding:8px 12px;border:2px solid #E72F24;font:600 14px 'Source Sans 3',system-ui;color:#E72F24">Genesis Church</span>
+      <span id="discovery" style="padding:8px 12px;border:2px solid #1A1A1B;background:#1A1A1B;font:600 14px 'Source Sans 3',system-ui;color:#00CEC9">Discovery Centre</span>
+      <span id="lighthouse" style="padding:8px 12px;border:2px solid #D4AF37;background:#F9F7F2;font:600 14px 'Source Sans 3',system-ui;color:#1A1A1B">Lighthouse Christ Church</span>
+      <span id="events" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">Events list · Event detail</span>
+      <span id="watch" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">Watch · Listen · Gallery</span>
+      <span id="membership" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">Membership step 1</span>
+      <span id="privacy" style="padding:8px 12px;border:2px solid #042F48;font:600 14px 'Source Sans 3',system-ui;color:#042F48">404 · Search · Privacy</span>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;selectedAmount&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:100,&quot;options&quot;:[25,50,100,250,500],&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Give page&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const sel = this.props.selectedAmount ?? 100;
+    const amounts = [25, 50, 100, 250, 500].map(v => ({ label: '$' + v, bg: v === sel ? '#042F48' : '#F5F2EC', fg: v === sel ? '#F5F2EC' : '#042F48' }));
+    const funds = ['General', 'Tithe', 'Building', 'Missions', 'Specific Giving'].map((l, i) => ({ label: l, bg: i === 0 ? '#042F48' : 'transparent', fg: i === 0 ? '#F5F2EC' : '#042F48' }));
+    const forms = ['Contact Us', 'First Timer', 'New Believer', 'Prayer Request', 'Ask Pastor', 'Join Workforce', 'Baby Dedication', 'Special Thanksgiving', 'Praise Report'].map(l => ({ label: l, bg: l === 'Prayer Request' ? '#042F48' : 'transparent', fg: l === 'Prayer Request' ? '#F5F2EC' : '#042F48' }));
+    const events = [
+      { mon: 'NOV', day: '28', title: 'Couples Retreat 2025', time: 'Nov 28–29', where: 'Best Western Plus, Leduc', tag: 'Couples', tagBg: '#403486', tagFg: '#F5F2EC' },
+      { mon: 'OCT', day: '19', title: 'Thanksgiving Sunday', time: '10:00 AM', where: '2331 90B Street SW', tag: 'Church-wide', tagBg: '#042F48', tagFg: '#F5F2EC' },
+      { mon: 'OCT', day: '24', title: 'Discovery Small Groups', time: '7:00 PM · third Friday', where: 'Church hall', tag: 'Discovery Centre', tagBg: '#1A1A1B', tagFg: '#00CEC9' }
+    ];
+    const ministries = [
+      { name: 'Lighthouse Christ Church', kicker: 'Young adults', href: '#lighthouse', bg: '#F9F7F2', fg: '#1A1A1B', accent: '#D4AF37', accentText: '#8A6D1D', desc: 'Supporting young adults in their faith journey, fostering fellowship and spiritual growth.' },
+      { name: 'Genesis Church', kicker: 'Children', href: '#genesis', bg: '#FFFFFF', fg: '#1A1A1B', accent: '#E72F24', accentText: '#E72F24', desc: 'A fun, faith-based environment for children to learn about Jesus through interactive activities.' },
+      { name: 'Discovery Centre', kicker: 'Teens · grades 7–12', href: '#discovery', bg: '#1A1A1B', fg: '#FFFFFF', accent: '#00CEC9', accentText: '#00CEC9', desc: 'Empowering teens to grow in faith, leadership, and service, while building strong connections with peers.' },
+      { name: 'Men of Impact', kicker: 'Men', href: '#ministries', bg: '#F5F2EC', fg: '#042F48', accent: '#403486', accentText: '#403486', desc: 'A supportive environment where men come together for Bible study, prayer, and fellowship, fostering deeper relationships with God and each other.' },
+      { name: 'Women of Zion', kicker: 'Women', href: '#ministries', bg: '#F5F2EC', fg: '#042F48', accent: '#403486', accentText: '#403486', desc: 'A nurturing environment where women come together for Bible study, prayer, and shared experiences, deepening their relationship with God and each other.' },
+      { name: 'Christ Church Seniors', kicker: 'Seniors', href: '#ministries', bg: '#F5F2EC', fg: '#042F48', accent: '#403486', accentText: '#403486', desc: 'A unique space for lifelong learning, sharing wisdom, and continuing to serve others, through mentorship, prayer, and community outreach.' },
+      { name: 'Couples', kicker: 'Couples', href: '#ministries', bg: '#F5F2EC', fg: '#042F48', accent: '#403486', accentText: '#403486', desc: '[one-line description — CM to supply]' }
+    ];
+    const faqs = [
+      { q: 'What should I wear?', a: 'Come as you are. On any Sunday you will see suits, traditional attire and jeans side by side.', open: true },
+      { q: 'How long is the service?', a: 'About two hours, including praise and worship, prayer and the message. [confirm]', open: false },
+      { q: 'Is there something for my kids?', a: 'Yes. Genesis Church runs for children during the service, and Discovery Centre welcomes grades 7 to 12. Check-in is at the entrance.', open: false },
+      { q: 'Do I need to be Nigerian or RCCG to attend?', a: 'No. We are a parish of RCCG with roots in Nigeria, and our doors are open to everyone, from every nation and background.', open: false },
+      { q: 'Can I watch online?', a: 'Yes. Every Sunday service is streamed live; find it under Watch Online.', open: false }
+    ];
+    const tokens = [
+      { name: 'Covenant Navy', hex: '#042F48', var: '--cce-navy', contrast: 'on Parchment 12.6:1 · white on it 14.0:1' },
+      { name: 'Sanctuary Violet', hex: '#403486', var: '--cce-violet', contrast: 'on Parchment 9.2:1 · white on it 10.2:1' },
+      { name: 'Radiant Amber', hex: '#EF8C34', var: '--cce-amber', contrast: 'Navy on it 5.6:1 · as text on Parchment 2.2:1 ✕' },
+      { name: 'Dawn Violet', hex: '#7373B5', var: '--cce-dawn', contrast: 'on Parchment 3.9:1 (large text / icons only)' },
+      { name: 'Mist', hex: '#E4E4EF', var: '--cce-mist', contrast: 'Navy on it 11.1:1' },
+      { name: 'Parchment', hex: '#F5F2EC', var: '--cce-parchment', contrast: 'page ground · Graphite on it 11.2:1' },
+      { name: 'Graphite', hex: '#2B3540', var: '--cce-graphite', contrast: 'body text · on Parchment 11.2:1' }
+    ];
+    const cssTokens = `:root {
+  --cce-navy: #042F48;
+  --cce-violet: #403486;
+  --cce-amber: #EF8C34;
+  --cce-dawn: #7373B5;
+  --cce-mist: #E4E4EF;
+  --cce-parchment: #F5F2EC;
+  --cce-graphite: #2B3540;
+  --cce-navy-70: rgba(4,47,72,.7);
+  --cce-photo-tint: rgba(4,47,72,.2);
+
+  --cce-font-heading: Montserrat, "Source Sans 3", system-ui;
+  --cce-font-body: "Source Sans 3", system-ui;
+  --cce-font-scripture: "Cormorant Garamond", Georgia, serif;
+
+  --cce-radius: 4px;
+  --cce-rule: 2px solid var(--cce-navy);
+  --cce-tap: 44px;
+  --cce-control: 48px;
+  --cce-gutter: 64px;   /* 20px at 390 */
+}`;
+    const cssType = `/* Montserrat 600/700/800 · Source Sans 3 300/400/600 */
+--cce-display-lg: 800 56px/1.05 var(--cce-font-heading);  /* -0.02em */
+--cce-display:    800 40px/1.10 var(--cce-font-heading);  /* -0.02em */
+--cce-h2:         700 32px/1.15 var(--cce-font-heading);  /* -0.01em */
+--cce-h3:         700 24px/1.20 var(--cce-font-heading);  /* -0.01em */
+--cce-subhead:    600 18px/1.40 var(--cce-font-heading);
+--cce-eyebrow:    700 11px/1   var(--cce-font-heading);  /* +0.28em, caps */
+--cce-intro:      300 20px/1.65 var(--cce-font-body);
+--cce-body:       400 16px/1.65 var(--cce-font-body);
+--cce-label:      600 16px/1.4  var(--cce-font-body);
+--cce-caption:    400 13px/1.5  var(--cce-font-body);     /* color: navy-70 */
+--cce-scripture:  italic 400 26px/1.35 var(--cce-font-scripture);
+
+/* Buttons */
+.btn { min-height: var(--cce-control); padding: 0 22px; border-radius: var(--cce-radius);
+  font: 700 14px/1 var(--cce-font-heading); justify-content: flex-start; }
+.btn-primary   { background: var(--cce-amber); color: var(--cce-navy); }
+.btn-secondary { border: 2px solid currentColor; }
+.btn-tertiary  { color: var(--cce-violet); } .btn-tertiary:hover { text-decoration: underline; }
+.btn:hover     { background: var(--cce-violet); color: var(--cce-parchment); }
+:focus-visible { outline: 2px solid var(--cce-amber); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none; animation: none; } }`;
+    return { amounts, funds, forms, events, ministries, faqs, tokens, cssTokens, cssType };
+  }
+}
+</script>
+</body>
+</html>

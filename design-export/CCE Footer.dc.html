@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/styles.css">
+  <script src="_ds/modernist-cd16cd97-38be-4b70-b567-776d494fdc3e/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Sans+3:wght@300;400;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap">
+</helmet>
+<footer style="background:#042F48;color:#F5F2EC;font-family:'Source Sans 3',system-ui;border-top:2px solid #403486;container-type:inline-size">
+  <sc-if value="{{ ministryLine }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:14px clamp(20px,4.4cqw,64px);border-bottom:2px solid #403486;font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">A Ministry of RCCG Christ Church Edmonton</div>
+  </sc-if>
+  <div style="display:grid;gap:40px;padding:clamp(40px,5cqw,64px) clamp(20px,4.4cqw,64px) 48px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+    <div style="display:grid;gap:16px;align-content:start">
+      <div style="width:72px;height:72px;border:1px dashed #7373B5;display:grid;place-items:center;font:700 8px Montserrat,system-ui;text-align:center;line-height:1.1;color:#7373B5">LOGO<br>WHITE</div>
+      <address style="font-style:normal;font-size:16px;line-height:1.65">2331 90B Street SW<br>Edmonton AB T6X 1V6</address>
+      <a href="tel:+15875980316" style="color:#F5F2EC;text-decoration:none;font-size:16px" style-hover="text-decoration:underline">(587) 598-0316</a>
+      <a href="mailto:info@rccgchristchurch.ca" style="color:#F5F2EC;text-decoration:none;font-size:16px" style-hover="text-decoration:underline">info@rccgchristchurch.ca</a>
+    </div>
+    <div style="display:grid;gap:10px;align-content:start">
+      <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#7373B5;margin-bottom:6px">Service times</div>
+      <div style="font-size:16px;line-height:1.65"><strong style="font-weight:600">Sunday Service</strong><br>10:00 AM</div>
+      <div style="font-size:16px;line-height:1.65"><strong style="font-weight:600">Midweek</strong><br><span style="color:#E4E4EF">[confirm day and time]</span></div>
+    </div>
+    <nav aria-label="Quick links" style="display:grid;gap:4px;align-content:start">
+      <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#7373B5;margin-bottom:12px">Quick links</div>
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" onClick="{{ l.go }}" style="color:#F5F2EC;text-decoration:none;font-size:16px;min-height:32px;display:flex;align-items:center" style-hover="text-decoration:underline">{{ l.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:grid;gap:12px;align-content:start">
+      <div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#7373B5;margin-bottom:6px">Follow</div>
+      <div style="display:flex;gap:8px">
+        <a href="#" aria-label="Facebook" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #7373B5;border-radius:4px;color:#F5F2EC;font:700 11px Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486">FB</a>
+        <a href="#" aria-label="Instagram" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #7373B5;border-radius:4px;color:#F5F2EC;font:700 11px Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486">IG</a>
+        <a href="#" aria-label="YouTube" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #7373B5;border-radius:4px;color:#F5F2EC;font:700 11px Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486">YT</a>
+      </div>
+      <p style="margin:12px 0 0;font:italic 500 22px/1.4 'Cormorant Garamond',serif;color:#F5F2EC">“Surely the Lord is in this place.” <span style="font-size:16px;opacity:.85">Genesis 28:16</span></p>
+    </div>
+  </div>
+  <div style="border-top:2px solid #403486;padding:20px clamp(20px,4.4cqw,64px);display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;font-size:14px;color:#E4E4EF">
+    <span>A parish of The Redeemed Christian Church of God</span>
+    <span>© 2026 RCCG Christ Church Edmonton · <a href="#privacy" onClick="{{ goPrivacy }}" style="color:#E4E4EF" style-hover="color:#EF8C34">Privacy</a></span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:420},&quot;ministryLine&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;nav&quot;:{&quot;editor&quot;:null,&quot;default&quot;:null,&quot;tsType&quot;:&quot;(page: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  go(page) { return (e) => { if (e && e.preventDefault) e.preventDefault(); if (this.props.nav) this.props.nav(page); }; }
+  renderVals() {
+    const defs = [['visit','Plan Your Visit'],['watch','Watch Online'],['give','Give'],['prayer','Prayer Request'],['events','Events'],['fellowships','House Fellowships']];
+    return { ministryLine: !!this.props.ministryLine, links: defs.map(([k,l]) => ({ href: '#'+k, label: l, go: this.go(k) })), goPrivacy: this.go('privacy') };
+  }
+}
+</script>
+</body>
+</html>

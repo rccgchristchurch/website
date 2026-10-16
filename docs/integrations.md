@@ -37,6 +37,10 @@ Then open http://127.0.0.1:8090. The Claude desktop app can also start it from `
 
 The hourly schedule is what keeps the latest sermon, live status and calendar current without anyone editing the website.
 
+Two limits found on the first push (2026-10-16):
+- **Private repositories cannot use GitHub Pages on a free personal account.** The repository `rccgchristchurch/website` is private, so the deploy step fails until the repository is made public (Settings, General, Danger zone, Change visibility) or the account is upgraded to GitHub Pro. A church website is public by nature, so making the repository public once the draft is ready for HODs is the simplest path. Cloudflare Pages and Netlify are free alternatives that can publish from a private repository.
+- **YouTube sometimes answers 404 to GitHub's runners** even though the same feed works from a home connection. The fetch script retries three times and then keeps the last committed `site/data/feeds.json`, so the deploy never fails on it; the videos are simply as fresh as the last successful fetch. Running `node scripts/fetch-feeds.mjs` locally and committing `site/data/feeds.json` refreshes it by hand. If the block turns out to be permanent, the reliable fix is a YouTube Data API key stored as a repository secret.
+
 ## 4. YouTube: latest Sunday, latest midweek, live
 
 Channel: RCCG Christ Church Edmonton, ID `UCoqF4wZyvVON6lmCtC2Jzdw` (from the old site's footer, verified 2026-10-15). No API key is used.

@@ -21,7 +21,7 @@ const CFG = win.CCE_CONFIG;
 
 const UA = 'Mozilla/5.0 (compatible; ChristChurchSiteBot/1.0)';
 const get = async (url) => {
-  const r = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'en-CA,en' } });
+  const r = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'en-CA,en', 'accept': 'application/atom+xml, application/xml, text/html;q=0.9, */*;q=0.8' } });
   if (!r.ok) throw new Error(`${r.status} ${url}`);
   return r.text();
 };
@@ -118,11 +118,28 @@ async function calendar() {
   return { configured: true, events: parseIcs(ics) };
 }
 
+// Never fail the build: if a source cannot be reached (YouTube sometimes answers 404 to
+// GitHub's runners), keep that section from the previously committed feeds.json.
+let previous = {};
+try { previous = JSON.parse(readFileSync(OUT, 'utf8')); } catch (e) {}
+
+const attempt = async (name, fn, fallback) => {
+  for (let i = 1; i <= 3; i++) {
+    try { return await fn(); } catch (e) {
+      console.warn(`${name} attempt ${i} failed: ${e.message}`);
+      await new Promise((r) => setTimeout(r, 2000 * i));
+    }
+  }
+  console.warn(`${name}: keeping previous data`);
+  return fallback;
+};
+
 const data = {
   generatedAt: new Date().toISOString(),
-  youtube: await youtube(),
-  calendar: await calendar().catch((e) => ({ configured: true, events: [], error: e.message }))
+  youtube: await attempt('youtube', youtube, previous.youtube || { channelId: CFG.youtube.channelId, live: { isLive: false, videoId: null }, latest: null, sunday: null, midweek: null, lighthouse: null, vigil: null, recent: [] }),
+  calendar: await attempt('calendar', calendar, previous.calendar || { configured: !!CFG.calendar.googleCalendarId, events: [] })
 };
+if (data.youtube === previous.youtube) data.youtubeStale = previous.generatedAt || true;
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(data, null, 2));
 console.log(`wrote ${OUT}`);

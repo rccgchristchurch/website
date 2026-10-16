@@ -33,7 +33,7 @@ window.CCE_CONFIG = {
       entries: { page: '', name: '', department: '', message: '' }   // e.g. 'entry.123456'
     },
     // Option B (works today): feedback opens the reviewer's email client with everything filled in.
-    mailto: 'info@rccgchristchurch.ca',
+    mailto: 'precie2010.pd@gmail.com',   // project manager's inbox during the HOD review; switch to the church office later
     subjectPrefix: '[Website draft feedback]'
   },
 

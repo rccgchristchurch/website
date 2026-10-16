@@ -98,3 +98,15 @@ GitHub Pages serves static files only, so "a database" means one of these:
 Recommended order: keep the static site, add Google Forms for the Connect page forms, add Decap CMS when staff need to edit copy, and only add Supabase if the business directory or membership needs search and accounts.
 
 The prototype runtime (React via unpkg, Claude Design's template language) is right for review but not for launch. When the design is approved, rebuild the approved screens as static HTML/CSS using the CSS tokens on the prototype's Design system screen, keep `site-config.js`, `feedback.js`, `scripts/fetch-feeds.mjs` and the workflow as they are, and the live pieces carry over unchanged.
+
+## 8. Quick wins added 16 October 2026
+
+- Live-stream auto-switch: during service windows (Sun 9:45-14:00, Wed 17:45-19:30, first Fri 21:45 to Sat 00:30, Edmonton time) Home and Watch show the YouTube live embed instead of the last video, no API needed.
+- Notice banner: set `notice.text` (and optional `link`, `linkLabel`) in `site-config.js`; an amber bar appears under the header on every page. Clear the text to hide it.
+- Cookie consent bar (`consent.js`): records Accept all / Essential only in localStorage as `cce.consent`; analytics should check `window.CCE_CONSENT === 'all'` before loading.
+- Meta description, Open Graph and Twitter tags, `robots.txt`, `sitemap.xml`. The `noindex` tag stays until launch.
+- Accessibility statement and Photo and streaming notice pages, linked from the footer.
+- Old-address redirects: `site/<old-path>/index.html` stubs for the 27 old Wix paths send visitors to the matching screen.
+- Share on WhatsApp / Facebook and Copy link on the event page; Share on WhatsApp on Watch.
+- Pastoral Care and Room Booking forms in the Connect hub.
+- Site search (SEARCH in the menu) across pages, ministries, units, values, priorities, FAQs and forms.

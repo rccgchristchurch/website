@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Christ Church Edmonton - website draft</title>
+<meta name="description" content="RCCG Christ Church Edmonton: a Pentecostal church family in south Edmonton. Sunday services at 10:00 AM and 12:30 PM, Bible Study Wednesdays 6:00 PM, in person at 2331 90B Street SW and online.">
+<link rel="canonical" href="https://rccgchristchurch.github.io/website/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RCCG Christ Church Edmonton">
+<meta property="og:title" content="RCCG Christ Church Edmonton">
+<meta property="og:description" content="Habitation of God's glory and the expression of His person. Sundays 10:00 AM and 12:30 PM, Wednesdays 6:00 PM, 2331 90B Street SW, Edmonton.">
+<meta property="og:image" content="https://rccgchristchurch.github.io/website/assets/photos/hero-congregation.jpg">
+<meta property="og:url" content="https://rccgchristchurch.github.io/website/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#042F48">
 <script src="./site-config.js"></script>
 <script src="./support.js"></script>
 </head>
@@ -48,6 +58,7 @@
   <div style="overflow-x:auto;padding:24px 0 64px">
   <div data-annotations="{{ annAttr }}" style="width:{{ frameW }};margin:0 auto;background:#F5F2EC;color:#2B3540;font-family:'Source Sans 3',system-ui;container-type:inline-size;position:relative;border:2px solid #042F48">
     <dc-import name="CCE Header" mobile="{{ mobile }}" page="{{ page }}" nav="{{ nav }}" hint-size="100%,90px"></dc-import>
+    <sc-if value="{{ hasNotice }}" hint-placeholder-val="{{ false }}"><div role="status" style="background:#EF8C34;color:#042F48;padding:12px clamp(20px,4.4cqw,64px);font:600 15px/1.5 'Source Sans 3',system-ui;border-bottom:2px solid #042F48;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center"><span style="font:700 11px Montserrat,system-ui;letter-spacing:.28em">NOTICE</span><span>{{ noticeText }}</span><sc-if value="{{ hasNoticeLink }}" hint-placeholder-val="{{ false }}"><a href="{{ noticeLink }}" style="color:#042F48;font-weight:700">{{ noticeLinkLabel }}</a></sc-if></div></sc-if>
     <main id="main">
 
     <!-- ===== HOME ===== -->
@@ -100,8 +111,8 @@
           <div style="margin-top:12px"><span data-ann="{{ eventsAnn }}">{{ eventsAnnLabel }}</span></div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-bottom:2px solid #042F48">
-          <div style="aspect-ratio:16/9;background:#042F48;position:relative"><iframe src="{{ ytLatestEmbed }}" title="{{ ytLatestTitle }}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-          <div style="padding:clamp(28px,4.4cqw,64px);display:grid;gap:16px;align-content:center"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Latest sermon</div><h2 style="margin:0;font:700 clamp(24px,2.2cqw,32px)/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">{{ ytLatestTitle }} <span data-ann="{{ ytAnn }}">{{ ytAnnLabel }}</span></h2><div style="font-size:16px;line-height:1.65">{{ ytLatestMeta }}</div><a href="#watch" onClick="{{ goWatch }}" style="justify-self:start;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Watch more</a></div>
+          <div style="aspect-ratio:16/9;background:#042F48;position:relative"><iframe src="{{ homeEmbed }}" title="{{ homeTitle }}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div style="padding:clamp(28px,4.4cqw,64px);display:grid;gap:16px;align-content:center"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Latest sermon</div><h2 style="margin:0;font:700 clamp(24px,2.2cqw,32px)/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">{{ homeTitle }} <span data-ann="{{ ytAnn }}">{{ ytAnnLabel }}</span></h2><div style="font-size:16px;line-height:1.65">{{ homeMeta }}</div><a href="#watch" onClick="{{ goWatch }}" style="justify-self:start;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Watch more</a></div>
         </div>
         <div style="padding:clamp(48px,5.5cqw,80px) clamp(20px,4.4cqw,64px);border-bottom:2px solid #042F48">
           <div style="margin-bottom:28px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Ministries</div><h2 style="margin:8px 0 0;font:700 clamp(24px,2.2cqw,32px)/1.15 Montserrat,system-ui;letter-spacing:-.01em;color:#042F48">A place for every age and season</h2></div>
@@ -446,7 +457,7 @@
           </div>
           <aside style="display:grid;gap:16px;align-content:start;background:#E4E4EF;padding:28px;border-top:4px solid #EF8C34">
             <div style="font:800 32px/1 Montserrat,system-ui;color:#042F48">$200 <span style="font:400 16px 'Source Sans 3',system-ui">per couple</span></div>
-            <a href="#" style="display:flex;align-items:center;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">Register</a>
+            <a href="#" style="display:flex;align-items:center;min-height:52px;padding:0 24px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 15px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">Register</a><a href="{{ shareEventWa }}" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Share on WhatsApp</a><a href="{{ shareEventFb }}" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Share on Facebook</a><button type="button" onClick="{{ copyLink }}" style="display:flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;background:transparent;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;cursor:pointer" style-hover="background:#042F48;color:#F5F2EC">{{ copyLabel }}</button>
             <a href="#connect" onClick="{{ goContact }}" style="display:flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Contact organiser</a>
             <a href="{{ icsRetreat }}" download="christ-church-edmonton.ics" style="display:flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Add to calendar</a>
             <div style="border-top:2px solid #042F48;padding-top:16px;display:grid;gap:8px"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;color:#403486">SHARE</div><div style="display:flex;gap:8px"><a href="#" aria-label="Share on WhatsApp" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #042F48;border-radius:4px;color:#042F48;font:700 11px Montserrat,system-ui;text-decoration:none">WA</a><a href="#" aria-label="Share on Facebook" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #042F48;border-radius:4px;color:#042F48;font:700 11px Montserrat,system-ui;text-decoration:none">FB</a><a href="#" aria-label="Copy link" style="width:44px;height:44px;display:grid;place-items:center;border:2px solid #042F48;border-radius:4px;color:#042F48;font:700 11px Montserrat,system-ui;text-decoration:none">URL</a></div></div>
@@ -460,7 +471,7 @@
       <div data-screen-label="Watch">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-bottom:2px solid #042F48">
           <div style="aspect-ratio:16/9;background:#042F48;position:relative"><iframe src="{{ ytHeroEmbed }}" title="{{ ytHeroTitle }}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-          <div style="padding:clamp(28px,4.4cqw,64px);display:grid;gap:14px;align-content:center"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Media · Watch</div><h1 style="margin:0;font:800 clamp(30px,2.8cqw,40px)/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">{{ ytHeroTitle }} <span data-ann="{{ ytAnn }}">{{ ytAnnLabel }}</span></h1><div style="font-size:16px;line-height:1.65">{{ ytHeroMeta }}</div><div style="display:flex;flex-wrap:wrap;gap:12px"><a href="{{ ytLiveUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">{{ ytLiveLabel }}</a><a href="#" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Listen · Podcast</a></div></div>
+          <div style="padding:clamp(28px,4.4cqw,64px);display:grid;gap:14px;align-content:center"><div style="font:700 11px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Media · Watch</div><h1 style="margin:0;font:800 clamp(30px,2.8cqw,40px)/1.1 Montserrat,system-ui;letter-spacing:-.02em;color:#042F48">{{ ytHeroTitle }} <span data-ann="{{ ytAnn }}">{{ ytAnnLabel }}</span></h1><div style="font-size:16px;line-height:1.65">{{ ytHeroMeta }}</div><div style="display:flex;flex-wrap:wrap;gap:12px"><a href="{{ ytLiveUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#403486;border-color:#403486;color:#F5F2EC">{{ ytLiveLabel }}</a><a href="#" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Listen · Podcast</a><a href="{{ shareWatchWa }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#042F48;border:2px solid #042F48;border-radius:4px;font:700 14px/1 Montserrat,system-ui;text-decoration:none" style-hover="background:#042F48;color:#F5F2EC">Share on WhatsApp</a></div></div>
         </div>
         <sc-if value="{{ hasMidweek }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-bottom:2px solid #042F48">
@@ -611,11 +622,11 @@
     <!-- ===== UTILITY: SEARCH ===== -->
     <sc-if value="{{ isSearch }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Search results">
-        <div style="padding:clamp(48px,6.6cqw,96px) clamp(20px,4.4cqw,64px) 32px;display:grid;gap:16px;max-width:860px"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Search</div><form style="display:grid;grid-template-columns:1fr auto;gap:12px"><input type="search" value="house fellowship" aria-label="Search the site" style="height:52px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 18px 'Source Sans 3',system-ui;min-width:0"><button type="button" style="min-height:52px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;cursor:pointer">Search</button></form><div style="font-size:15px">3 results for “house fellowship”</div></div>
+        <div style="padding:clamp(48px,6.6cqw,96px) clamp(20px,4.4cqw,64px) 32px;display:grid;gap:16px;max-width:860px"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#403486">Search</div><form onSubmit="{{ noSubmit }}" style="display:grid;grid-template-columns:1fr auto;gap:12px"><input type="search" value="{{ q }}" onChange="{{ setQ }}" placeholder="Try: giving, youth, bible study, membership" aria-label="Search the site" style="height:52px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:0 14px;font:400 18px 'Source Sans 3',system-ui;min-width:0"><button type="button" style="min-height:52px;padding:0 22px;background:#EF8C34;color:#042F48;border:2px solid #EF8C34;border-radius:4px;font:700 14px/1 Montserrat,system-ui;cursor:pointer">Search</button></form><div style="font-size:15px">{{ resultCount }}</div></div>
         <div style="border-top:2px solid #042F48;margin:0 clamp(20px,4.4cqw,64px) clamp(48px,5.5cqw,80px)">
-          <a href="#fellowships" onClick="{{ goFellowships }}" style="display:grid;gap:4px;padding:20px 0;border-bottom:2px solid #042F48;text-decoration:none;color:#042F48"><span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;color:#403486">WORSHIP</span><span style="font:700 20px Montserrat,system-ui">House Fellowships</span><span style="font-size:15px;color:#2B3540">Small groups of 8–12 adults across south Edmonton. Find a fellowship near you.</span></a>
-          <a href="#home" onClick="{{ goHome }}" style="display:grid;gap:4px;padding:20px 0;border-bottom:2px solid #042F48;text-decoration:none;color:#042F48"><span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;color:#403486">HOME</span><span style="font:700 20px Montserrat,system-ui">Join a House Fellowship</span><span style="font-size:15px;color:#2B3540">Next steps for new and returning visitors.</span></a>
-          <a href="#connect" onClick="{{ goConnect }}" style="display:grid;gap:4px;padding:20px 0;border-bottom:2px solid #042F48;text-decoration:none;color:#042F48"><span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;color:#403486">CONNECT</span><span style="font:700 20px Montserrat,system-ui">First Timer form</span><span style="font-size:15px;color:#2B3540">Ask for House Fellowship information when you fill in the first-timer form.</span></a>
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+          <a href="{{ r.href }}" onClick="{{ r.go }}" style="display:grid;gap:4px;padding:20px 0;border-bottom:2px solid #042F48;text-decoration:none;color:#042F48"><span style="font:700 10px Montserrat,system-ui;letter-spacing:.14em;color:#403486">{{ r.section }}</span><span style="font:700 20px Montserrat,system-ui">{{ r.title }}</span><span style="font-size:15px;color:#2B3540">{{ r.blurb }}</span></a>
+          </sc-for>
         </div>
       </div>
     </sc-if>
@@ -630,6 +641,25 @@
         </div>
       </div>
     </sc-if>
+
+    <!-- ===== ACCESSIBILITY STATEMENT ===== -->
+    <sc-if value="{{ isAccessibility }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Accessibility statement">
+        <div style="background:#042F48;color:#F5F2EC;padding:clamp(48px,6.6cqw,96px) clamp(20px,4.4cqw,64px);display:grid;gap:12px;border-bottom:2px solid #403486"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">About this site</div><h1 style="margin:0;font:800 clamp(36px,3.9cqw,56px)/1.05 Montserrat,system-ui;letter-spacing:-.02em">Accessibility statement</h1><div style="font-size:15px;color:#E4E4EF">Last updated October 2026 <span data-ann="draft">Placeholder · review before launch</span></div></div>
+        <div style="padding:clamp(40px,5.5cqw,80px) clamp(20px,4.4cqw,64px)"><article style="display:grid;gap:20px;max-width:70ch;font-size:16px;line-height:1.7">
+<h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Our commitment</h2><p style="margin:0">RCCG Christ Church Edmonton wants everyone to be able to use this website, whatever device or assistive technology they use. The site is built to the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA: text and background colours meet the 4.5:1 contrast ratio, every page can be used with a keyboard, images carry descriptions, headings are in order, and the site works at 390 pixels wide without side scrolling.</p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Known limitations</h2><p style="margin:0">Videos are hosted on YouTube and depend on YouTube's captions, which are automatic unless the media team adds its own. Maps and the online giving form come from third parties and follow their accessibility rules. We are working through these as the site develops.</p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">In the building</h2><p style="margin:0">2331 90B Street SW has a step-free entrance, accessible washrooms and seating that can be reserved on request. Tell an usher if you need help getting settled. <span data-ann="draft">Placeholder · confirm</span></p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Tell us</h2><p style="margin:0">If something on this site is hard to use, email <a href="mailto:info@rccgchristchurch.ca">info@rccgchristchurch.ca</a> or call (587) 598-0316 and we will fix it or give you the information another way.</p>        </article></div>
+      </div>
+    </sc-if>
+
+    <!-- ===== PHOTO AND STREAMING NOTICE ===== -->
+    <sc-if value="{{ isConsent }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Photo and streaming notice">
+        <div style="background:#042F48;color:#F5F2EC;padding:clamp(48px,6.6cqw,96px) clamp(20px,4.4cqw,64px);display:grid;gap:12px;border-bottom:2px solid #403486"><div style="font:700 12px Montserrat,system-ui;letter-spacing:.28em;text-transform:uppercase;color:#EF8C34">About this site</div><h1 style="margin:0;font:800 clamp(36px,3.9cqw,56px)/1.05 Montserrat,system-ui;letter-spacing:-.02em">Photo and streaming notice</h1><div style="font-size:15px;color:#E4E4EF">Last updated October 2026 <span data-ann="draft">Placeholder · review with leadership</span></div></div>
+        <div style="padding:clamp(40px,5.5cqw,80px) clamp(20px,4.4cqw,64px)"><article style="display:grid;gap:20px;max-width:70ch;font-size:16px;line-height:1.7">
+<h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Services are streamed</h2><p style="margin:0">Sunday services, the Wednesday Bible Study, Holy Communion and the Night Vigil are streamed live on our YouTube channel and stay online afterwards. Cameras point at the platform and the front rows. If you would rather not appear on camera, sit towards the back or ask an usher where the cameras cannot see.</p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Photos at church events</h2><p style="margin:0">Our media team takes photographs at services and events for the website, social media and church publications. We do not publish a photo that identifies a child without a parent or guardian's permission, and we take down any photo of you on request.</p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Your choices</h2><p style="margin:0">Email <a href="mailto:media@rccgchristchurch.ca">media@rccgchristchurch.ca</a> to ask that a photo be removed, to opt your family out of photography, or to ask how a picture is being used. Prayer requests and anything shared with a pastor are never filmed or published.</p><h2 style="margin:0;font:700 26px/1.2 Montserrat,system-ui;color:#042F48">Terms of use</h2><p style="margin:0">Content on this site belongs to RCCG Christ Church Edmonton or is used with permission. You may share links and sermon videos freely. Please do not reuse photos of members without asking.</p>        </article></div>
+      </div>
+    </sc-if>
+
 
     <!-- ===== DESIGN SYSTEM ===== -->
     <sc-if value="{{ isSystem }}" hint-placeholder-val="{{ false }}">
@@ -724,10 +754,11 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
-  state = { page: 'home', viewport: 'desktop', ann: true, filter: 'All', form: 'Prayer Request', bio: 0, contactFor: null, tab: 'Sermons', amount: 100, fund: 'General', recurring: false, series: 'All', feeds: null, joinFor: null };
+  state = { page: 'home', viewport: 'desktop', ann: true, filter: 'All', form: 'Prayer Request', bio: 0, contactFor: null, tab: 'Sermons', amount: 100, fund: 'General', recurring: false, series: 'All', feeds: null, joinFor: null, q: '', copied: false };
   componentDidMount() { fetch('data/feeds.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(f => { if (f) this.setState({ feeds: f }); }).catch(() => {}); try { const p = localStorage.getItem('cce.page'); const v = localStorage.getItem('cce.viewport'); const s = {}; if (p) s.page = p; if (v) s.viewport = v; this.setState(s); } catch (e) {} }
   nav = (page) => { this.setState({ page }); try { localStorage.setItem('cce.page', page); } catch (e) {} window.scrollTo({ top: 0 }); };
   go(page) { return (e) => { if (e && e.preventDefault) e.preventDefault(); this.nav(page); }; }
+  copyLink = (e) => { if (e && e.preventDefault) e.preventDefault(); const u = 'https://rccgchristchurch.github.io/website/'; try { navigator.clipboard.writeText(u); } catch (err) {} this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 2000); };
   contact() { return (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ form: 'Contact Us', joinFor: null }); this.nav('connect'); }; }
   join(group) { return (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ form: 'Join a Ministry', joinFor: group }); this.nav('connect'); }; }
   set(patch) { return (e) => { if (e && e.preventDefault && e.currentTarget && e.currentTarget.tagName === 'A') e.preventDefault(); this.setState(patch); }; }
@@ -753,9 +784,15 @@ class Component extends DCLogic {
     const ytLatestEmbed = sunday ? embedUrl(sunday.id) : uploadsEmbed;
     const ytLatestTitle = sunday ? sunday.title : 'Latest service';
     const ytLatestMeta = sunday ? 'Published ' + fmtDate(sunday.published) + ' · RCCG Christ Church Edmonton on YouTube' : 'Most recent upload from the church YouTube channel';
-    const ytHeroEmbed = isLive && yt.live.videoId ? embedUrl(yt.live.videoId) + '&autoplay=1' : (isLive ? liveEmbed : ytLatestEmbed);
-    const ytHeroTitle = isLive ? 'We are live right now' : ytLatestTitle;
-    const ytHeroMeta = isLive ? 'Join the service as it happens' : ytLatestMeta;
+    // Service windows (Edmonton time): Sun 9:45-14:00, Wed 17:45-19:30, first Fri 21:45 to Sat 00:30. The live embed shows then, even before the hourly feed notices.
+    const edm = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Edmonton' }));
+    const dow = edm.getDay(), mins = edm.getHours() * 60 + edm.getMinutes(), dom = edm.getDate();
+    const inWindow = (dow === 0 && mins >= 585 && mins <= 840) || (dow === 3 && mins >= 1065 && mins <= 1170) || (dow === 5 && dom <= 7 && mins >= 1305) || (dow === 6 && dom >= 2 && dom <= 8 && mins <= 30);
+    const liveNow = isLive || inWindow;
+    const liveSrc = isLive && yt.live.videoId ? embedUrl(yt.live.videoId) + '&autoplay=1' : liveEmbed + '&autoplay=1';
+    const ytHeroEmbed = liveNow ? liveSrc : ytLatestEmbed;
+    const ytHeroTitle = isLive ? 'We are live right now' : (inWindow ? 'Service is on now' : ytLatestTitle);
+    const ytHeroMeta = isLive ? 'Join the service as it happens' : (inWindow ? 'Join us live. If the stream has not started yet, it will appear here in a moment.' : ytLatestMeta);
     const ytAnn = sunday ? 'final' : 'draft';
     const ytAnnLabel = sunday ? 'Live from YouTube' : 'Latest upload · feed not fetched yet';
     const hasMidweek = !!midweek;
@@ -764,7 +801,10 @@ class Component extends DCLogic {
     const ytMidweekMeta = midweek ? 'Published ' + fmtDate(midweek.published) : '';
     const ytLiveUrl = ytCfg.channelId ? 'https://www.youtube.com/channel/' + ytCfg.channelId + '/live' : '#';
     const ytChannelUrl = ytCfg.channelId ? 'https://www.youtube.com/channel/' + ytCfg.channelId : '#';
-    const ytLiveLabel = isLive ? 'Watching live now' : 'Watch live on YouTube';
+    const ytLiveLabel = liveNow ? 'Watching live now' : 'Watch live on YouTube';
+    const homeEmbed = liveNow ? liveSrc : ytLatestEmbed;
+    const homeTitle = liveNow ? ytHeroTitle : ytLatestTitle;
+    const homeMeta = liveNow ? ytHeroMeta : ytLatestMeta;
     const feedSermons = (yt.recent || []).map(v => ({ title: v.title.split('|')[0].trim(), speaker: 'RCCG Christ Church Edmonton', date: fmtDate(v.published), series: classify(v.title), url: 'https://www.youtube.com/watch?v=' + v.id, thumb: v.thumbnail }));
     const calCfg = cfg.calendar || {};
     const calConfigured = !!calCfg.googleCalendarId;
@@ -774,7 +814,7 @@ class Component extends DCLogic {
     const liveEvents = ((feeds.calendar && feeds.calendar.events) || []).map(ev => { const d = new Date(ev.start); return { mon: d.toLocaleDateString('en-CA', { month: 'short' }).toUpperCase().replace('.', ''), day: String(d.getDate()).padStart(2, '0'), title: ev.title, time: ev.allDay ? 'All day' : d.toLocaleTimeString('en-CA', { hour: 'numeric', minute: '2-digit' }), where: ev.location || '2331 90B Street SW', tag: tagFor(ev.title + ' ' + (ev.description || '')) }; });
     const eventsAnn = liveEvents.length ? 'final' : 'draft';
     const eventsAnnLabel = liveEvents.length ? 'Live from Google Calendar' : 'Placeholder events · calendar not connected yet';
-    const pages = [['home','Home'],['visit',"I'm New · Plan Your Visit"],['about','About'],['story','Our Story'],['values','Values'],['priorities','Priorities'],['worship','Worship · Services'],['fellowships','House Fellowships'],['ministries','Ministries'],['genesis','Genesis Church'],['discovery','Discovery Centre'],['lighthouse','Lighthouse Christ Church'],['men','Men of Impact'],['women','Women of Zion'],['seniors','Christ Church Seniors'],['couples','Couples'],['units','Church Units'],['events','Events'],['event','Event detail · Couples Retreat'],['watch','Media · Watch'],['give','Give'],['connect','Connect · Contact hub'],['prayer','Prayer Request'],['membership','Membership step 1'],['business','Christian Business'],['notfound','404'],['search','Search results'],['privacy','Privacy / generic page'],['system','Design system']];
+    const pages = [['home','Home'],['visit',"I'm New · Plan Your Visit"],['about','About'],['story','Our Story'],['values','Values'],['priorities','Priorities'],['worship','Worship · Services'],['fellowships','House Fellowships'],['ministries','Ministries'],['genesis','Genesis Church'],['discovery','Discovery Centre'],['lighthouse','Lighthouse Christ Church'],['men','Men of Impact'],['women','Women of Zion'],['seniors','Christ Church Seniors'],['couples','Couples'],['units','Church Units'],['events','Events'],['event','Event detail · Couples Retreat'],['watch','Media · Watch'],['give','Give'],['connect','Connect · Contact hub'],['prayer','Prayer Request'],['membership','Membership step 1'],['business','Christian Business'],['notfound','404'],['search','Search results'],['privacy','Privacy / generic page'],['accessibility','Accessibility statement'],['consent','Photo and streaming notice'],['system','Design system']];
     const subBrand = ['genesis','discovery','lighthouse','men','women','seniors','couples'].includes(P);
     const ministries = [
       { key:'lighthouse', name: 'Lighthouse Christ Church', logo: 'assets/logos/lighthouse/lcc-light-bg.png', kicker: 'Young adults', bg: '#F9F7F2', fg: '#1A1A1B', accent: '#D4AF37', accentText: '#8A6D1D', desc: 'Supporting young adults in their faith journey, fostering fellowship and spiritual growth.' },
@@ -879,6 +919,8 @@ class Component extends DCLogic {
       'New Believer': { intro: 'Complete this form if you just accepted Jesus Christ as your Lord and Savior.', ann: 'final', fields: [['First name'],['Last name'],['Email'],['Phone'],['Tell us about your decision (optional)','tall']], submit: 'Submit' },
       'Prayer Request': { intro: 'Our prayer team prays over every request. Share as much or as little as you like; requests are kept confidential.', ann: 'draft', fields: [['First name'],['Last name (optional)'],['Email'],['Phone (optional)'],['Your prayer request','tall'],['Do you want a Pastor to reach out to you?','choice','Yes · No']], submit: 'Send prayer request' },
       'Ask Pastor': { intro: 'Ask a question about faith, the Bible or church life. A pastor will reply by email.', ann: 'draft', fields: [['Name'],['Email'],['Who is this question for?','choice','Pastor David · Pastor John · Either'],['Your question','tall']], submit: 'Send question' },
+      'Pastoral Care': { intro: 'For a hospital visit, a home visit, bereavement support or a conversation with a pastor. Only the pastors see this form.', ann: 'draft', fields: [['Name'],['Phone'],['Email (optional)'],['What kind of care?','choice','Hospital visit · Home visit · Counselling · Bereavement · Other'],['Tell us what is happening','tall'],['Best time to reach you']], submit: 'Send privately' },
+      'Room Booking': { intro: 'Request a room at 2331 90B Street SW for a ministry meeting or event. The office confirms availability within two working days.', ann: 'draft', fields: [['Name'],['Email'],['Phone'],['Room','choice','Sanctuary · Fellowship hall · Classroom · Youth room · Gym'],['Date'],['Start and end time'],['Purpose and expected numbers','tall']], submit: 'Request booking' },
       'Join Workforce': { intro: 'Tell us where you would like to serve and a unit leader will be in touch.', ann: 'draft', fields: [['Name'],['Email'],['Phone'],['Units I am interested in','choice','Prayer · Choir · Evangelism · Welcome · Media · Drama · Hospitality · Sanctuary Keepers · Ushering · Sunday School · Transportation · Beautification'],['Skills or experience (optional)','tall']], submit: 'Join the workforce' },
       'Baby Dedication': { intro: 'Request a dedication during a Sunday service.', ann: 'draft', fields: [["Parents' names"],['Email'],['Phone'],["Child's name"],["Child's date of birth"],['Preferred Sunday']], submit: 'Request dedication' },
       'Special Thanksgiving': { intro: 'Let us celebrate with you during the service.', ann: 'draft', fields: [['Name'],['Email'],['Phone'],['Occasion'],['Preferred Sunday'],['Details (optional)','tall']], submit: 'Request thanksgiving' },
@@ -934,10 +976,30 @@ class Component extends DCLogic {
     const icsMidweek = icsFile('midweek-bible-study', 'Midweek Bible Study - RCCG Christ Church Edmonton', 'Wednesdays at 6:00 PM. On the first Wednesday of the month this is the Holy Communion service. In church and streamed on YouTube.', '20261021T180000', '20261021T193000', 'FREQ=WEEKLY;BYDAY=WE');
     const icsVigil = icsFile('night-vigil', 'Night Vigil - RCCG Christ Church Edmonton', 'First Friday of the month at 10:00 PM. In church and streamed on YouTube.', '20261106T220000', '20261107T000000', 'FREQ=MONTHLY;BYDAY=1FR');
     const icsRetreat = icsFile('couples-retreat-2025', 'Couples Retreat 2025 - RCCG Christ Church Edmonton', 'Best Western Plus Airport Hotel Leduc. Check-in from 4:00 PM Friday; ends after 6:00 PM Saturday.', '20251128T160000', '20251129T180000', '');
+    const noticeCfg = cfg.notice || {};
+    const hasNotice = !!(noticeCfg.text && String(noticeCfg.text).trim());
+    const shareUrl = 'https://rccgchristchurch.github.io/website/';
+    const shareWatchWa = 'https://wa.me/?text=' + encodeURIComponent((sunday ? sunday.title + ' - ' : '') + 'RCCG Christ Church Edmonton ' + (sunday ? 'https://www.youtube.com/watch?v=' + sunday.id : shareUrl));
+    const shareEventWa = 'https://wa.me/?text=' + encodeURIComponent('Couples Retreat 2025 - RCCG Christ Church Edmonton ' + shareUrl);
+    const shareEventFb = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+    const q = (s.q || '').trim().toLowerCase();
+    const idx = [];
+    pages.forEach(([k, label]) => { if (!['notfound','search','system'].includes(k)) idx.push({ key: k, section: 'Page', title: label, blurb: '' }); });
+    ministries.forEach(m => idx.push({ key: m.key, section: 'Ministries', title: m.name, blurb: m.desc }));
+    units.forEach(u => idx.push({ key: 'units', section: 'Church units', title: u.name, blurb: u.desc }));
+    values.forEach(v => idx.push({ key: 'values', section: 'Values', title: v.title, blurb: v.desc }));
+    priorities.forEach(p => idx.push({ key: 'priorities', section: 'Priorities', title: 'Priority ' + p.n, blurb: p.text }));
+    faqs.forEach(f => idx.push({ key: 'visit', section: "I'm New", title: f.q, blurb: f.a }));
+    formNames.forEach(f => idx.push({ key: 'connect', section: 'Connect', title: f + ' form', blurb: formDefs[f].intro }));
+    fellowships.forEach(h => idx.push({ key: 'fellowships', section: 'House Fellowships', title: h.area, blurb: 'Contact: ' + h.lead }));
+    [['worship','Gracepoint Service','Sundays 10:00 AM, in church and streamed online.'],['worship','Lighthouse Service','Sundays 12:30 PM, the young adult service.'],['worship','Bible Study','Wednesdays 6:00 PM; first Wednesday is Holy Communion.'],['worship','Night Vigil','First Friday of the month at 10:00 PM.'],['give','Giving','One-time or recurring, online, in person or by cheque.'],['membership','Membership registration','Register as a member of Christ Church.'],['watch','Sermons and livestream','Latest Sunday and midweek services on YouTube.'],['story','Our history','Christ Church Edmonton was planted in 2008 from Rhema Chapel.']].forEach(([k, t, b]) => idx.push({ key: k, section: 'Page', title: t, blurb: b }));
+    const results = (q.length < 2 ? [] : idx.filter(r => (r.title + ' ' + r.blurb).toLowerCase().includes(q))).slice(0, 25).map(r => ({ ...r, href: '#' + r.key, go: this.go(r.key) }));
+    const resultCount = q.length < 2 ? 'Type at least two letters to search the site.' : results.length + (results.length === 1 ? ' result' : ' results') + ' for \u201c' + s.q.trim() + '\u201d';
     const flags = {};
     pages.forEach(([k]) => { flags['is' + k[0].toUpperCase() + k.slice(1)] = is(k); });
     return {
-      ...flags, page: P, mobile, nav: this.nav, isSubBrand: subBrand, isAdult, adult, icsGracepoint, icsLighthouse, icsMidweek, icsVigil, icsRetreat,
+      ...flags, page: P, mobile, nav: this.nav, isSubBrand: subBrand, isAdult, adult, hasNotice, noticeText: noticeCfg.text || '', hasNoticeLink: !!noticeCfg.link, noticeLink: noticeCfg.link || '#', noticeLinkLabel: noticeCfg.linkLabel || 'Read more',
+      shareWatchWa, shareEventWa, shareEventFb, copyLink: this.copyLink, copyLabel: s.copied ? 'Link copied' : 'Copy link', q: s.q, setQ: (e) => this.setState({ q: e.target.value }), noSubmit: (e) => { if (e && e.preventDefault) e.preventDefault(); }, results, resultCount, icsGracepoint, icsLighthouse, icsMidweek, icsVigil, icsRetreat,
       goContact: this.contact(), joinFellowship: this.join('House Fellowship'), joinGenesis: this.join('Genesis Church'), joinDiscovery: this.join('Discovery Centre'), joinLighthouse: this.join('Lighthouse Christ Church'),
       frameW: widths[s.viewport], annAttr: s.ann ? 'on' : 'off', annLabel: s.ann ? 'on' : 'off', toggleAnn: () => this.setState({ ann: !s.ann }),
       pageOptions: pages.map(([key, label]) => ({ key, label })), onSelect: (e) => this.nav(e.target.value),
@@ -954,5 +1016,6 @@ class Component extends DCLogic {
 }
 </script>
 <script src="./feedback.js" defer></script>
+<script src="./consent.js" defer></script>
 </body>
 </html>

@@ -57,7 +57,7 @@
 class Component extends DCLogic {
   go(page) { return (e) => { if (e && e.preventDefault) e.preventDefault(); if (this.props.nav) this.props.nav(page); }; }
   renderVals() {
-    const defs = [['visit','Plan Your Visit'],['watch','Watch Online'],['give','Give'],['prayer','Prayer Request'],['events','Events'],['fellowships','House Fellowships']];
+    const defs = [['visit','Plan Your Visit'],['watch','Watch Online'],['give','Give'],['prayer','Prayer Request'],['events','Events'],['fellowships','House Fellowships'],['accessibility','Accessibility'],['consent','Photo and streaming notice'],['search','Search']];
     return { ministryLine: !!this.props.ministryLine, links: defs.map(([k,l]) => ({ href: '#'+k, label: l, go: this.go(k) })), goPrivacy: this.go('privacy') };
   }
 }

@@ -37,6 +37,14 @@ window.CCE_CONFIG = {
     subjectPrefix: '[Website draft feedback]'
   },
 
+  // Emergency / service-change notice shown in an amber bar under the header on every page.
+  // Leave text empty to hide it. Example: text: 'Sunday 2 Feb: services cancelled due to the snowstorm. Join us online at 10:00 AM.'
+  notice: {
+    text: '',
+    link: '',        // optional, e.g. '#watch' or a full URL
+    linkLabel: ''    // optional, e.g. 'Watch online'
+  },
+
   social: {
     facebook: 'https://www.facebook.com/ChristChurchEdmonton',
     instagram: 'https://www.instagram.com/christchurchRCCG',

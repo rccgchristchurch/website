@@ -67,8 +67,8 @@ class Component extends DCLogic {
   renderVals() {
     const mobile = !!this.props.mobile;
     const page = this.props.page || 'home';
-    const sections = { home: ['home'], visit: ['visit'], about: ['about','story','values','priorities'], worship: ['worship','fellowships'], ministries: ['ministries','genesis','discovery','lighthouse','men','units'], events: ['events','event'], watch: ['watch'], give: ['give'], connect: ['connect','prayer','membership','business'] };
-    const defs = [['home','HOME'],['visit',"I'M NEW"],['about','ABOUT'],['worship','WORSHIP'],['ministries','MINISTRIES'],['events','EVENTS'],['watch','MEDIA'],['give','GIVE'],['connect','CONNECT']];
+    const sections = { home: ['home'], visit: ['visit'], about: ['about','story','values','priorities'], worship: ['worship','fellowships'], ministries: ['ministries','genesis','discovery','lighthouse','men','units'], events: ['events','event'], watch: ['watch'], give: ['give'], connect: ['connect','prayer','membership','business'], search: ['search'] };
+    const defs = [['home','HOME'],['visit',"I'M NEW"],['about','ABOUT'],['worship','WORSHIP'],['ministries','MINISTRIES'],['events','EVENTS'],['watch','MEDIA'],['give','GIVE'],['connect','CONNECT'],['search','SEARCH']];
     const items = defs.map(([k, label]) => { const cur = (sections[k] || []).includes(page); return { label, href: '#' + k, go: this.go(k), current: cur ? 'page' : undefined, border: cur ? '#EF8C34' : 'transparent' }; });
     return { mobile, notMobile: !mobile, open: this.state.open, items,
       toggle: () => this.setState(s => ({ open: !s.open })),

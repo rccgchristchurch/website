@@ -67,7 +67,7 @@
       <label>What should change?<textarea name="message" required placeholder="What works, what is missing, what is wrong"></textarea></label>
       <button class="cce-fb-send" type="submit">Send feedback</button>
     </form>
-    <div class="cce-fb-done"><strong>Thank you.</strong> Your feedback has been recorded for this page.<br><br><button type="button" class="cce-fb-send" data-again>Send another</button></div>
+    <div class="cce-fb-done"></div>
   `;
 
   const form = panel.querySelector('form');
@@ -94,8 +94,49 @@
   function close() { panel.removeAttribute('data-open'); btn.focus(); }
   btn.addEventListener('click', () => (panel.hasAttribute('data-open') ? close() : open()));
   closeBtn.addEventListener('click', close);
-  panel.querySelector('[data-again]').addEventListener('click', () => { form.reset(); panel.removeAttribute('data-done'); fillPages(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel.hasAttribute('data-open')) close(); });
+
+  const doneEl = panel.querySelector('.cce-fb-done');
+  const sendBtn = form.querySelector('.cce-fb-send');
+  const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const LOG = 'cce.feedback.log';
+
+  // Every submission is kept on this device too, so nothing is lost if delivery fails.
+  function saveLocal(data) {
+    try {
+      const log = JSON.parse(localStorage.getItem(LOG) || '[]');
+      log.push(Object.assign({ at: new Date().toISOString() }, data));
+      localStorage.setItem(LOG, JSON.stringify(log.slice(-50)));
+    } catch (e) {}
+  }
+  function again() { form.reset(); panel.removeAttribute('data-done'); fillPages(); }
+  function showDone(html) {
+    doneEl.innerHTML = html + '<br><br><button type="button" class="cce-fb-send" data-again>Send another</button>';
+    doneEl.querySelector('[data-again]').addEventListener('click', again);
+    panel.setAttribute('data-done', '');
+  }
+  function plainText(data) {
+    return 'Page: ' + data.page + '\nFrom: ' + data.name + (data.department ? ' (' + data.department + ')' : '') + '\n\n' + data.message + '\n\n' + data.url;
+  }
+  function showFallback(data, why) {
+    const subject = (cfg.subjectPrefix || '[Website feedback]') + ' ' + data.page;
+    const text = plainText(data);
+    const mailto = 'mailto:' + (cfg.mailto || '') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+    showDone(
+      '<strong>' + escapeHtml(why) + '</strong> Your feedback is saved on this device. Please copy it and email it to <a href="mailto:' + escapeHtml(cfg.mailto || '') + '">' + escapeHtml(cfg.mailto || 'the project team') + '</a>, or open your email app.' +
+      '<textarea readonly style="margin-top:10px;width:100%;min-height:120px;border:2px solid #042F48;border-radius:4px;background:#fff;padding:8px 10px;font:400 14px \'Source Sans 3\',system-ui">' + escapeHtml(text) + '</textarea>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="cce-fb-send" data-copy>Copy feedback</button><a class="cce-fb-send" style="display:inline-flex;align-items:center;text-decoration:none" href="' + mailto.replace(/"/g, '&quot;') + '">Open email app</a></div>'
+    );
+    const copyBtn = doneEl.querySelector('[data-copy]');
+    copyBtn.addEventListener('click', () => {
+      const ta = doneEl.querySelector('textarea');
+      ta.select();
+      let ok = false;
+      try { ok = !!(navigator.clipboard && navigator.clipboard.writeText(ta.value)); } catch (e) {}
+      if (!ok) { try { ok = document.execCommand('copy'); } catch (e) {} }
+      copyBtn.textContent = ok ? 'Copied' : 'Select the text and copy it';
+    });
+  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -106,6 +147,7 @@
       message: form.message.value.trim(),
       url: location.href
     };
+    saveLocal(data);
     const gf = cfg.googleForm || {};
     if (gf.action && gf.entries && gf.entries.message) {
       // Post silently to the Google Form through a hidden iframe (Google Forms allow cross-site posts).
@@ -130,12 +172,29 @@
       document.body.appendChild(f);
       f.submit();
       f.remove();
-    } else {
-      const subject = (cfg.subjectPrefix || '[Website feedback]') + ' ' + data.page;
-      const body = 'Page: ' + data.page + '\nFrom: ' + data.name + (data.department ? ' (' + data.department + ')' : '') + '\n\n' + data.message + '\n\n' + data.url;
-      window.location.href = 'mailto:' + (cfg.mailto || '') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      showDone('<strong>Thank you.</strong> Your feedback has been recorded in the review sheet.');
+      return;
     }
-    panel.setAttribute('data-done', '');
+    if (cfg.deliverTo) {
+      // Send through formsubmit.co, which emails the address in site-config.js. No mail app needed.
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending…';
+      const subject = (cfg.subjectPrefix || '[Website feedback]') + ' ' + data.page;
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(cfg.deliverTo), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: subject, _template: 'table', _captcha: 'false', Page: data.page, Name: data.name, Department: data.department, Feedback: data.message, Link: data.url })
+      }).then((r) => r.json().then((j) => ({ ok: r.ok, j }))).then(({ ok, j }) => {
+        const success = ok && j && String(j.success) === 'true';
+        if (success) showDone('<strong>Thank you.</strong> Your feedback has been sent to the project team.');
+        else showFallback(data, 'The feedback service did not accept this yet.');
+      }).catch(() => showFallback(data, 'We could not reach the feedback service.')).finally(() => {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send feedback';
+      });
+      return;
+    }
+    showFallback(data, 'Automatic delivery is not set up yet.');
   });
 
   document.body.appendChild(btn);

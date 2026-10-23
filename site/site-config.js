@@ -32,7 +32,11 @@ window.CCE_CONFIG = {
       action: '',          // e.g. 'https://docs.google.com/forms/d/e/XXXX/formResponse'
       entries: { page: '', name: '', department: '', message: '' }   // e.g. 'entry.123456'
     },
-    // Option B (works today): feedback opens the reviewer's email client with everything filled in.
+    // Option B (default): feedback is posted to formsubmit.co, which emails it to this address.
+    // The FIRST submission triggers a one-time activation email to that address: click the link in it,
+    // after which every submission arrives as an email. Set to '' to disable.
+    deliverTo: 'precie2010.pd@gmail.com',
+    // Option C (fallback when B fails): the reviewer is asked to copy the text and email it here.
     mailto: 'precie2010.pd@gmail.com',   // project manager's inbox during the HOD review; switch to the church office later
     subjectPrefix: '[Website draft feedback]'
   },

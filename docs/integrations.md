@@ -77,8 +77,8 @@ Members can subscribe to the same calendar on their phones from the "Subscribe o
 
 A floating **Feedback** button sits bottom-right on every screen. It records which screen and viewport the reviewer was on, their name, department and comment.
 
-Two ways to receive it:
-- **Email (works today):** the button opens the reviewer's email client addressed to `info@rccgchristchurch.ca` with everything filled in. Change the address in `site-config.js`.
+Three ways to receive it, tried in this order:
+- **Direct delivery (default since 23 Oct 2026):** the button posts to formsubmit.co, which emails the feedback to `feedback.deliverTo` in `site-config.js`. The first submission to a new address triggers a one-time activation email to that address; click its link and every later submission arrives as an email. Every submission is also kept in the reviewer's browser (`cce.feedback.log`). If delivery fails, the panel shows the text with Copy and Open email app buttons instead of claiming success. Before 23 Oct the button only opened the reviewer's mail app and then wrongly said "recorded", so feedback from that period was never received unless the reviewer pressed Send in their mail app.
 - **Google Form (recommended for a review round):** create a Google Form with four short-answer questions: Page, Name, Department, Feedback. Open the form's "Get pre-filled link", fill dummy values, copy the link, and read the `entry.NNNNNN` id for each question. Put the form's `formResponse` URL and the four ids into `site-config.js` under `feedback.googleForm`. Submissions then land silently in the form's response sheet, one row per comment, with no email client involved.
 
 Set `feedback.enabled: false` (or remove `feedback.js` from `index.html`) before public launch.

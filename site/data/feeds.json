@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T00:38:35.871Z",
+  "generatedAt": "2026-11-07T05:41:57.241Z",
   "youtube": {
     "channelId": "UCoqF4wZyvVON6lmCtC2Jzdw",
     "live": {
@@ -117,7 +117,65 @@
     ]
   },
   "calendar": {
-    "configured": false,
-    "events": []
-  }
+    "configured": true,
+    "events": [
+      {
+        "title": "General Vigil",
+        "location": "RCCG Christ Church, Edmonton",
+        "description": "",
+        "allDay": false,
+        "start": "2026-11-07T04:00:00.000Z",
+        "local": "2026-11-06T22:00"
+      },
+      {
+        "title": "Evangelism Prayer",
+        "location": "RCCG Christ Church, Edmonton",
+        "description": "",
+        "allDay": false,
+        "start": "2026-11-14T17:00:00.000Z",
+        "local": "2026-11-14T11:00"
+      },
+      {
+        "title": "Lighthouse Bible Study",
+        "location": "RCCG Christ Church, Edmonton, 2331 90b St SW, Edmonton, AB T6X 1V8, Canada",
+        "description": "",
+        "allDay": false,
+        "start": "2026-11-18T00:00:00.000Z",
+        "local": "2026-11-17T18:00"
+      },
+      {
+        "title": "Couples' Program",
+        "location": "RCCG Christ Church, Edmonton",
+        "description": "",
+        "allDay": false,
+        "start": "2026-11-21T22:00:00.000Z",
+        "local": "2026-11-21T16:00"
+      },
+      {
+        "title": "Abba's Moment",
+        "location": "RCCG Christ Church, Edmonton",
+        "description": "",
+        "allDay": false,
+        "start": "2026-11-27T01:00:00.000Z",
+        "local": "2026-11-26T19:00"
+      },
+      {
+        "title": "Lighthouse Bible Study",
+        "location": "RCCG Christ Church, Edmonton, 2331 90b St SW, Edmonton, AB T6X 1V8, Canada",
+        "description": "",
+        "allDay": false,
+        "start": "2026-12-16T00:00:00.000Z",
+        "local": "2026-12-15T18:00"
+      },
+      {
+        "title": "Lighthouse Bible Study",
+        "location": "RCCG Christ Church, Edmonton, 2331 90b St SW, Edmonton, AB T6X 1V8, Canada",
+        "description": "",
+        "allDay": false,
+        "start": "2027-01-20T00:00:00.000Z",
+        "local": "2027-01-19T18:00"
+      }
+    ]
+  },
+  "youtubeStale": "2026-11-07T05:41:17.517Z"
 }

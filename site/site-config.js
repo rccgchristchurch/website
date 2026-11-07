@@ -25,7 +25,7 @@ window.CCE_CONFIG = {
   calendar: {
     // Public Google Calendar ID, e.g. "abc123@group.calendar.google.com".
     // Leave empty until the church creates one; the Events page then shows a note instead.
-    googleCalendarId: '',
+    googleCalendarId: 'rccgchristchurchedmonton@gmail.com',
     timeZone: 'America/Edmonton'
   },
 

@@ -177,27 +177,17 @@
     }
     const sb = (window.CCE_CONFIG && window.CCE_CONFIG.supabase) || {};
     const useSupabase = !!(sb.url && sb.anonKey);
-    if (!useSupabase && !cfg.deliverTo) { showFallback(data, 'Automatic delivery is not set up yet.'); return; }
+    if (!useSupabase) { showFallback(data, 'Automatic delivery is not set up yet.'); return; }
 
     sendBtn.disabled = true;
     sendBtn.textContent = 'Sending…';
     const done = () => { sendBtn.disabled = false; sendBtn.textContent = 'Send feedback'; };
 
-    // 1. Store it in Supabase (the main record), 2. email a copy as a notification.
-    // Either one succeeding counts as delivered; if both fail the reviewer gets the copy-and-email fallback.
-    const toSupabase = useSupabase ? sendSupabase(sb, data) : Promise.resolve(false);
-    toSupabase.then((stored) => {
-      const emailed = cfg.deliverTo ? sendEmail(data) : Promise.resolve(false);
-      if (stored) {
-        emailed.catch(() => {});
-        showDone('<strong>Thank you.</strong> Your feedback has been saved for the project team.');
-        done();
-        return;
-      }
-      return emailed.then((ok) => {
-        if (ok) showDone('<strong>Thank you.</strong> Your feedback has been sent to the project team.');
-        else showFallback(data, 'We could not deliver this automatically.');
-      }).catch(() => showFallback(data, 'We could not reach the feedback service.')).finally(done);
+    // Saved to the Supabase feedback table; staff read it in the member portal (Website feedback).
+    sendSupabase(sb, data).then((stored) => {
+      if (stored) showDone('<strong>Thank you.</strong> Your feedback has been saved for the project team.');
+      else showFallback(data, 'We could not save this automatically.');
+      done();
     });
   });
 
@@ -207,15 +197,6 @@
       headers: { 'apikey': sb.anonKey, 'Authorization': 'Bearer ' + sb.anonKey, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ page: data.page, name: data.name, department: data.department || null, message: data.message, url: data.url, user_agent: (navigator.userAgent || '').slice(0, 400) })
     }).then((r) => r.ok).catch(() => false);
-  }
-
-  function sendEmail(data) {
-    const subject = (cfg.subjectPrefix || '[Website feedback]') + ' ' + data.page;
-    return fetch('https://formsubmit.co/ajax/' + encodeURIComponent(cfg.deliverTo), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ _subject: subject, _template: 'table', _captcha: 'false', Page: data.page, Name: data.name, Department: data.department, Feedback: data.message, Link: data.url })
-    }).then((r) => r.json().then((j) => r.ok && j && String(j.success) === 'true')).catch(() => false);
   }
 
   document.body.appendChild(btn);

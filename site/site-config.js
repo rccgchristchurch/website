@@ -22,12 +22,6 @@ window.CCE_CONFIG = {
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jcXdoa2F4YnNuaW5mZXdwbmhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5MDEwMTIsImV4cCI6MjEwODQ3NzAxMn0.NWgNXPQI5nefB7tqZJ4PLb_bsXMyOiR_7HPcizS3ofk'
   },
 
-  // Website forms (Connect hub, Prayer, Membership, Business, Newsletter) save to Supabase.
-  // A copy of each one is emailed here. TESTING ONLY: only this address receives copies.
-  forms: {
-    notifyEmail: 'precie2010.pd@gmail.com'
-  },
-
   calendar: {
     // Public Google Calendar ID, e.g. "abc123@group.calendar.google.com".
     // Leave empty until the church creates one; the Events page then shows a note instead.
@@ -45,11 +39,8 @@ window.CCE_CONFIG = {
       action: '',          // e.g. 'https://docs.google.com/forms/d/e/XXXX/formResponse'
       entries: { page: '', name: '', department: '', message: '' }   // e.g. 'entry.123456'
     },
-    // Option B (default): feedback is posted to formsubmit.co, which emails it to this address.
-    // The FIRST submission triggers a one-time activation email to that address: click the link in it,
-    // after which every submission arrives as an email. Set to '' to disable.
-    deliverTo: 'precie2010.pd@gmail.com',
-    // Option C (fallback when B fails): the reviewer is asked to copy the text and email it here.
+    // Option B (default): saved to the Supabase feedback table (see supabase above).
+    // Option C (fallback when saving fails): the reviewer is asked to copy the text and email it here.
     mailto: 'precie2010.pd@gmail.com',   // project manager's inbox during the HOD review; switch to the church office later
     subjectPrefix: '[Website draft feedback]'
   },

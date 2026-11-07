@@ -1,9 +1,8 @@
-// Sends the website's forms to Supabase and emails a copy to forms.notifyEmail in site-config.js.
+// Sends the website's forms to Supabase. Staff read them in the member portal's staff area.
 // Used by the page component in index.html through window.CCE_FORMS.
 (function () {
   var cfg = window.CCE_CONFIG || {};
   var sb = cfg.supabase || {};
-  var notify = (cfg.forms && cfg.forms.notifyEmail) || '';
   var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
   function insert(table, row) {
@@ -18,18 +17,6 @@
         return { ok: false, status: r.status, code: j.code, message: j.message };
       });
     }).catch(function () { return { ok: false, message: 'We could not reach the server. Check your connection and try again.' }; });
-  }
-
-  // Copy to the project inbox (testing). Never blocks or fails the submission.
-  function emailCopy(subject, fields) {
-    if (!notify) return;
-    try {
-      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(notify), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.assign({ _subject: subject, _template: 'table', _captcha: 'false' }, fields))
-      }).catch(function () {});
-    } catch (e) {}
   }
 
   function textOf(label) {
@@ -80,8 +67,7 @@
       page_url: location.href.slice(0, 500),
       user_agent: (navigator.userAgent || '').slice(0, 400)
     }).then(function (res) {
-      if (res.ok) emailCopy('[Website form] ' + formType + (name ? ' from ' + name : ''), Object.assign({ Form: formType }, answers));
-      else if (!res.message || res.code) res.message = 'Something went wrong saving this form. Please try again, or email info@rccgchristchurch.ca.';
+      if (!res.ok && (!res.message || res.code)) res.message = 'Something went wrong saving this form. Please try again, or email info@rccgchristchurch.ca.';
       return res;
     });
   }
@@ -108,8 +94,7 @@
       description: pick(answers, function (k) { return k.indexOf('description') !== -1; }) || null
     };
     return insert('business_directory', row).then(function (res) {
-      if (res.ok) emailCopy('[Website form] Business listing: ' + bizName, Object.assign({ Form: 'Christian Business' }, answers));
-      else res.message = 'Something went wrong saving this listing. Please try again.';
+      if (!res.ok) res.message = 'Something went wrong saving this listing. Please try again.';
       return res;
     });
   }
@@ -118,7 +103,7 @@
     email = (email || '').trim();
     if (!EMAIL_RE.test(email)) return Promise.resolve({ ok: false, message: 'Please enter a valid email address.' });
     return insert('newsletter_subscribers', { email: email, source: 'home page' }).then(function (res) {
-      if (res.ok) { emailCopy('[Website form] Newsletter sign-up', { Email: email }); return res; }
+      if (res.ok) return res;
       if (res.status === 409) return { ok: true, note: 'You were already on the list.' };
       res.message = 'Something went wrong. Please try again.';
       return res;

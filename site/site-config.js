@@ -15,6 +15,19 @@ window.CCE_CONFIG = {
     }
   },
 
+  // Supabase project (organization: RCCG Christ Church Edmonton, created Oct 2026).
+  // The anon key is public by design; row-level security on each table decides what it may do.
+  supabase: {
+    url: 'https://mcqwhkaxbsninfewpnha.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jcXdoa2F4YnNuaW5mZXdwbmhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5MDEwMTIsImV4cCI6MjEwODQ3NzAxMn0.NWgNXPQI5nefB7tqZJ4PLb_bsXMyOiR_7HPcizS3ofk'
+  },
+
+  // Website forms (Connect hub, Prayer, Membership, Business, Newsletter) save to Supabase.
+  // A copy of each one is emailed here. TESTING ONLY: only this address receives copies.
+  forms: {
+    notifyEmail: 'precie2010.pd@gmail.com'
+  },
+
   calendar: {
     // Public Google Calendar ID, e.g. "abc123@group.calendar.google.com".
     // Leave empty until the church creates one; the Events page then shows a note instead.

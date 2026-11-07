@@ -77,7 +77,9 @@ Members can subscribe to the same calendar on their phones from the "Subscribe o
 
 A floating **Feedback** button sits bottom-right on every screen. It records which screen and viewport the reviewer was on, their name, department and comment.
 
-Three ways to receive it, tried in this order:
+Primary route (since 25 Oct 2026): **Supabase**. Each submission is stored in the `feedback` table of the Supabase project `mcqwhkaxbsninfewpnha` (organization "RCCG Christ Church Edmonton"), created by `supabase/001_feedback.sql`. The public anon key in `site-config.js` may only insert; reading is done in the Supabase dashboard (Table Editor > feedback), where the `status` and `notes` columns track triage. An email copy is also sent through the route below when it is active.
+
+If Supabase is unreachable, these are tried in this order:
 - **Direct delivery (default since 23 Oct 2026):** the button posts to formsubmit.co, which emails the feedback to `feedback.deliverTo` in `site-config.js`. The first submission to a new address triggers a one-time activation email to that address; click its link and every later submission arrives as an email. Every submission is also kept in the reviewer's browser (`cce.feedback.log`). If delivery fails, the panel shows the text with Copy and Open email app buttons instead of claiming success. Before 23 Oct the button only opened the reviewer's mail app and then wrongly said "recorded", so feedback from that period was never received unless the reviewer pressed Send in their mail app.
 - **Google Form (recommended for a review round):** create a Google Form with four short-answer questions: Page, Name, Department, Feedback. Open the form's "Get pre-filled link", fill dummy values, copy the link, and read the `entry.NNNNNN` id for each question. Put the form's `formResponse` URL and the four ids into `site-config.js` under `feedback.googleForm`. Submissions then land silently in the form's response sheet, one row per comment, with no email client involved.
 
